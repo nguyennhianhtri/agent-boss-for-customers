@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solutioning Boards · ASEAN Agent Boss</title>
+    <meta
+      name="description"
+      content="Solutioning boards help you map the problem, users, data and guardrails before you build an agent."
+    />
+    <meta property="og:title" content="Solutioning Boards · ASEAN Agent Boss" />
+    <meta
+      property="og:description"
+      content="Map the problem, users, data and guardrails before you build an agent."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2306b6d4'/%3E%3Cstop offset='100%25' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='62' font-family='Helvetica' font-weight='800' fill='white'%3EA%3C/text%3E%3C/svg%3E" />
+    <style>
+      :root {
+        --bg: #f6f9fc;
+        --surface: #ffffff;
+        --surface-2: #f1f5f9;
+        --border: #e6ecf3;
+        --border-strong: #cbd5e1;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --text-subtle: #94a3b8;
+        --brand-1: #06b6d4;
+        --brand-2: #6366f1;
+        --brand-3: #ec4899;
+        --accent: var(--brand-2);
+        --accent-soft: rgba(99, 102, 241, 0.10);
+        --accent-soft-2: rgba(99, 102, 241, 0.18);
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04),
+          0 1px 3px rgba(15, 23, 42, 0.04);
+        --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.06),
+          0 2px 6px rgba(15, 23, 42, 0.04);
+        --shadow-lg: 0 14px 36px rgba(15, 23, 42, 0.10),
+          0 6px 18px rgba(15, 23, 42, 0.06);
+        --radius: 16px;
+        --radius-sm: 10px;
+        --radius-lg: 24px;
+        --gradient-brand: linear-gradient(
+          135deg,
+          var(--brand-1) 0%,
+          var(--brand-2) 55%,
+          var(--brand-3) 100%
+        );
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0a0f1f;
+          --surface: #111827;
+          --surface-2: #18223a;
+          --border: #1f2a44;
+          --border-strong: #2a3656;
+          --text: #e8ecf5;
+          --text-muted: #94a3b8;
+          --text-subtle: #64748b;
+          --brand-1: #22d3ee;
+          --brand-2: #818cf8;
+          --brand-3: #f472b6;
+          --accent: var(--brand-2);
+          --accent-soft: rgba(129, 140, 248, 0.16);
+          --accent-soft-2: rgba(129, 140, 248, 0.26);
+          --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+          --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+          --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.5);
+          --gradient-brand: linear-gradient(
+            135deg,
+            #155e75 0%,
+            #312e81 55%,
+            #831843 100%
+          );
+        }
+      }
+
+      [data-theme="dark"] {
+        --bg: #0a0f1f;
+        --surface: #111827;
+        --surface-2: #18223a;
+        --border: #1f2a44;
+        --border-strong: #2a3656;
+        --text: #e8ecf5;
+        --text-muted: #94a3b8;
+        --text-subtle: #64748b;
+        --brand-1: #22d3ee;
+        --brand-2: #818cf8;
+        --brand-3: #f472b6;
+        --accent: var(--brand-2);
+        --accent-soft: rgba(129, 140, 248, 0.16);
+        --accent-soft-2: rgba(129, 140, 248, 0.26);
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.5);
+        --gradient-brand: linear-gradient(
+          135deg,
+          #155e75 0%,
+          #312e81 55%,
+          #831843 100%
+        );
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          system-ui, "Helvetica Neue", Arial, sans-serif;
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { color: var(--accent); }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: var(--gradient-brand);
+        color: #fff;
+        isolation: isolate;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(60% 100% at 0% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
+          radial-gradient(60% 100% at 100% 100%, rgba(0, 0, 0, 0.20), transparent 55%);
+        pointer-events: none;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+        background-size: 28px 28px;
+        -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
+        pointer-events: none;
+      }
+      .top-bar {
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        z-index: 5;
+        display: flex;
+        gap: 0.5rem;
+      }
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        color: #fff;
+        cursor: pointer;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        transition: background-color 0.15s ease, transform 0.15s ease;
+      }
+      .icon-btn:hover { background: rgba(255, 255, 255, 0.26); }
+      .icon-btn:active { transform: scale(0.94); }
+      .icon-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem 3rem;
+      }
+      .hero .eyebrow {
+        display: inline-block;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.16);
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+      }
+      .hero h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(2rem, 4.6vw, 3.2rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        max-width: 24ch;
+      }
+      .hero p.lede {
+        margin: 0 0 1.5rem;
+        font-size: clamp(1rem, 1.4vw, 1.18rem);
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: 62ch;
+      }
+
+      /* ---------- Tabs ---------- */
+      .tabs-wrap {
+        max-width: 1200px;
+        margin: 2.5rem auto 0;
+        padding: 0 1.5rem;
+        position: relative;
+        z-index: 4;
+      }
+      .tabs {
+        display: flex;
+        gap: 0.35rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.32rem;
+        box-shadow: var(--shadow-md);
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
+      .tab {
+        flex: 0 0 auto;
+        padding: 0.55rem 1rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        border-radius: 999px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      .tab:hover { color: var(--text); background: var(--surface-2); }
+      .tab.active { background: var(--accent); color: #fff; }
+      .tab.active:hover { background: var(--accent); color: #fff; }
+
+      /* Single grouped pill-strip for the Agent Boss program
+         (program overview / playbook / boards / for customers). */
+      .tabs-pair {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 0.9rem;
+      }
+      .tabs-group { display: flex; flex-direction: column; gap: 0.3rem; }
+      .tabs-group-label {
+        align-self: flex-start;
+        margin-left: 0.5rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #fff;
+        background: rgba(15, 23, 42, 0.55);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        padding: 0.18rem 0.55rem;
+        border-radius: 999px;
+      }
+
+      /* ---------- Main ---------- */
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2.5rem 1.5rem 3rem;
+      }
+
+      /* ---------- Cohort grid ---------- */
+      .cohort-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .cohort-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.4rem 1.4rem 1.5rem;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      }
+      .cohort-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--border-strong);
+      }
+      .cohort-card .cohort-label {
+        margin: 0;
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-weight: 700;
+        color: var(--text-muted);
+      }
+      .cohort-card .cohort-name {
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        color: var(--text);
+      }
+      .cohort-card .cohort-code-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.55rem 0.75rem;
+      }
+      .cohort-card .cohort-code-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--text-subtle);
+      }
+      .cohort-card .cohort-code-value {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--text);
+      }
+      .cohort-card .cohort-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0.65rem 1rem;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.88rem;
+        transition: filter 0.15s ease;
+      }
+      .cohort-card .cohort-cta:hover { filter: brightness(1.05); }
+
+      /* ---------- How it fits ---------- */
+      .info-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 4px solid var(--accent);
+        border-radius: var(--radius);
+        padding: 1.1rem 1.3rem;
+        margin: 0 0 1.5rem;
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+      }
+      .info-card svg { flex: 0 0 auto; color: var(--accent); margin-top: 0.15rem; }
+      .info-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+      .info-card strong { color: var(--text); }
+
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 3rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.82rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: space-between;
+      }
+      footer a { color: var(--text-muted); text-decoration: none; }
+      footer a:hover { color: var(--accent); }
+
+      @media (max-width: 640px) {
+        .hero-inner { padding: 3rem 1.25rem 2.5rem; }
+        main { padding: 2rem 1.25rem 3rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="top-bar">
+        <button
+          id="themeToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle colour theme"
+          title="Toggle colour theme"
+        >🌗</button>
+      </div>
+      <div class="hero-inner">
+        <span class="eyebrow">Phase 2 · LEARN</span>
+        <h1>Solutioning Boards</h1>
+        <p class="lede">
+          A solutioning board is where an idea becomes a plan. Before any
+          building starts, you map the problem, the people, the data and the
+          guardrails — so the agent you build is the right one.
+        </p>
+      </div>
+    </header>
+
+    <nav class="tabs-wrap" aria-label="Sections">
+      <div class="tabs-pair">
+        <div class="tabs-group">
+          <span class="tabs-group-label">Agent Boss program</span>
+          <div class="tabs" role="tablist" aria-label="Agent Boss program sections">
+            <a class="tab" role="tab" href="../index.html">Program overview</a>
+            <a class="tab" role="tab" href="../agent-boss-playbook/index.html">Playbook Pathfinder</a>
+            <a class="tab active" role="tab" aria-current="page" href="../solutioning/index.html">Solutioning Boards</a>
+            <a class="tab" role="tab" href="../agent-boss-customer/index.html">For Customers</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="info-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <p>
+          <strong>How it works:</strong> A solutioning board is a single canvas
+          your team fills in during an envisioning workshop. Work through each
+          section below to pressure-test an agent idea before you commit to
+          building it.
+        </p>
+      </div>
+
+      <ul class="cohort-grid">
+        <li class="cohort-card">
+          <p class="cohort-label">Board section</p>
+          <h2 class="cohort-name">Problem &amp; opportunity</h2>
+          <p>What problem are you solving, for whom, and why now? Define the outcome before you pick a tool.</p>
+        </li>
+        <li class="cohort-card">
+          <p class="cohort-label">Board section</p>
+          <h2 class="cohort-name">Users &amp; journey</h2>
+          <p>Map who interacts with the agent and where it fits into their existing workflow.</p>
+        </li>
+        <li class="cohort-card">
+          <p class="cohort-label">Board section</p>
+          <h2 class="cohort-name">Data &amp; systems</h2>
+          <p>Identify the data, content and systems the agent needs to reach — and how it connects to them.</p>
+        </li>
+        <li class="cohort-card">
+          <p class="cohort-label">Board section</p>
+          <h2 class="cohort-name">Agent behaviour</h2>
+          <p>Decide what the agent should do, what it must never do, and when to hand back to a human.</p>
+        </li>
+        <li class="cohort-card">
+          <p class="cohort-label">Board section</p>
+          <h2 class="cohort-name">Success measures</h2>
+          <p>Agree how you&apos;ll know it&apos;s working: the signals, metrics and targets that define done.</p>
+        </li>
+        <li class="cohort-card">
+          <p class="cohort-label">Board section</p>
+          <h2 class="cohort-name">Risks &amp; guardrails</h2>
+          <p>Name the risks early — accuracy, privacy, security, compliance — and the guardrails that contain them.</p>
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      <span
+        >Built &amp; maintained by Tri Nguyen · Contact
+        <a href="mailto:nguyentri@microsoft.com">nguyentri@microsoft.com</a>
+        for anything related to this site</span
+      >
+    </footer>
+
+
+    <script>
+      // ---------- Theme toggle ----------
+      const THEME_KEY = "agent-skill-theme";
+      const root = document.documentElement;
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === "dark" || stored === "light") {
+        root.setAttribute("data-theme", stored);
+      }
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        const current =
+          root.getAttribute("data-theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        const next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem(THEME_KEY, next);
+      });
+
+    </script>
+  </body>
+</html>

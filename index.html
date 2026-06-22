@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Agent Boss for Your Organization — A Learning &amp; Transformation Engine</title>
+    <title>ASEAN Agent Boss Program</title>
     <meta
       name="description"
-      content="Bring the Agent Boss program to your organization as a learning and transformation engine — redesign workflows, build real agents, and create a self-sustaining culture of innovation. Co-designed with Microsoft, run by your people."
+      content="The ASEAN Agent Boss program — a 4-phase journey to make everyone an Agent Boss: SEED, LEARN, PACKAGE, SCALE."
     />
-    <meta property="og:title" content="Agent Boss for Your Organization — A Learning &amp; Transformation Engine" />
+    <meta property="og:title" content="ASEAN Agent Boss Program" />
     <meta
       property="og:description"
-      content="A learning and transformation engine that turns your teams into agent builders: sponsor, envision, build, and coach-the-coach to scale."
+      content="A 4-phase journey to make everyone an Agent Boss: SEED, LEARN, PACKAGE, SCALE."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -310,9 +310,8 @@
       .tab.active { background: var(--accent); color: #fff; }
       .tab.active:hover { background: var(--accent); color: #fff; }
 
-      /* Three grouped pill-strips: "for everyone" (registry),
-         "Agent Boss program" (program/playbook/boards), and
-         "Setup guides" (Scout, MSX MCP). */
+      /* Single grouped pill-strip for the Agent Boss program
+         (program overview / playbook / boards / for customers). */
       .tabs-pair {
         display: flex;
         flex-wrap: wrap;
@@ -687,287 +686,6 @@
           animation-duration: 0.001ms !important;
         }
       }
-
-      /* ---------- Customer page: pillars / roles / demos / stack ---------- */
-      .card-grid {
-        display: grid;
-        gap: 1rem;
-        margin: 0 0 1rem;
-      }
-      .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      @media (max-width: 980px) {
-        .cols-3, .cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      }
-      @media (max-width: 560px) {
-        .cols-3, .cols-4 { grid-template-columns: 1fr; }
-      }
-
-      .info-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1.2rem 1.3rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .info-card::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 4px;
-        background: var(--card-accent, var(--accent));
-      }
-      .info-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 11px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--card-soft, var(--accent-soft));
-        color: var(--card-accent, var(--accent));
-        margin-bottom: 0.7rem;
-      }
-      .info-icon svg { width: 20px; height: 20px; }
-      .info-eyebrow {
-        font-size: 0.72rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: var(--card-accent, var(--accent));
-      }
-      .info-title {
-        margin: 0.15rem 0 0.4rem;
-        font-weight: 800;
-        font-size: 1.08rem;
-        letter-spacing: -0.01em;
-      }
-      .info-desc {
-        margin: 0;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-      }
-      .info-card .role-meta {
-        margin-top: 0.7rem;
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: var(--text-subtle);
-      }
-
-      /* ---------- Demo cards ---------- */
-      .demo-card {
-        display: flex;
-        flex-direction: column;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
-      }
-      .demo-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--accent);
-      }
-      .demo-thumb {
-        position: relative;
-        aspect-ratio: 16 / 9;
-        background: var(--gradient-brand);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .demo-thumb::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(60% 100% at 30% 20%, rgba(255,255,255,0.22), transparent 60%);
-      }
-      .demo-play {
-        position: relative;
-        z-index: 1;
-        width: 54px;
-        height: 54px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.92);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-      }
-      .demo-play svg { width: 22px; height: 22px; color: #0f172a; margin-left: 3px; }
-      .demo-body {
-        padding: 1rem 1.2rem 1.2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-        flex: 1 1 auto;
-      }
-      .demo-eyebrow {
-        font-size: 0.7rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-weight: 700;
-        color: var(--accent);
-      }
-      .demo-name { margin: 0; font-weight: 800; font-size: 1.05rem; }
-      .demo-desc { margin: 0.1rem 0 0.5rem; color: var(--text-muted); font-size: 0.88rem; }
-      .demo-go { margin-top: auto; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
-
-      /* ---------- Callout ---------- */
-      .callout {
-        display: flex;
-        gap: 0.9rem;
-        align-items: flex-start;
-        background: var(--accent-soft);
-        border: 1px solid var(--border);
-        border-left: 4px solid var(--accent);
-        border-radius: var(--radius-sm);
-        padding: 1rem 1.2rem;
-        margin: 0.5rem 0 0;
-      }
-      .callout svg { flex: 0 0 auto; width: 20px; height: 20px; color: var(--accent); margin-top: 2px; }
-      .callout p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
-      .callout strong { color: var(--text); }
-
-      /* ---------- "How Microsoft helps" list ---------- */
-      .help-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.7rem;
-      }
-      @media (max-width: 640px) { .help-list { grid-template-columns: 1fr; } }
-      .help-list li {
-        display: flex;
-        gap: 0.6rem;
-        align-items: flex-start;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-      }
-      .help-list svg { flex: 0 0 auto; width: 18px; height: 18px; color: var(--brand-1); margin-top: 2px; }
-
-      /* ---------- CTA band ---------- */
-      .cta-band {
-        margin-top: 2.5rem;
-        background: var(--gradient-brand);
-        color: #fff;
-        border-radius: var(--radius-lg);
-        padding: 2rem 2rem 2.1rem;
-        position: relative;
-        overflow: hidden;
-        isolation: isolate;
-      }
-      .cta-band::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
-        background-size: 26px 26px;
-        -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,1), rgba(0,0,0,0.05));
-        mask-image: linear-gradient(180deg, rgba(0,0,0,1), rgba(0,0,0,0.05));
-        pointer-events: none;
-        z-index: -1;
-      }
-      .cta-band h2 { margin: 0 0 0.5rem; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; }
-      .cta-band p { margin: 0 0 1.2rem; max-width: 60ch; color: rgba(255, 255, 255, 0.9); }
-      .cta-deck { margin: 1.1rem 0 0; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); }
-      .cta-deck a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-      .cta-deck a:hover { text-decoration: none; }
-      .cta-deck span { margin: 0 0.5rem; opacity: 0.6; }
-
-      /* ---------- In-page view tabs ---------- */
-      .view-tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        justify-content: center;
-        margin: 0.5rem 0 3rem;
-      }
-      .view-tab {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.65rem;
-        padding: 1rem 2.1rem;
-        font: 800 1.08rem/1 "Inter", system-ui, sans-serif;
-        letter-spacing: -0.01em;
-        color: var(--text);
-        background: var(--surface-2);
-        border: 1.5px solid var(--border-strong);
-        border-radius: 999px;
-        cursor: pointer;
-        box-shadow: var(--shadow-sm);
-        transition: color 0.15s ease, background 0.15s ease,
-          border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-      }
-      .view-tab svg { width: 20px; height: 20px; flex-shrink: 0; }
-      .view-tab:hover {
-        color: var(--text);
-        border-color: var(--accent);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-      .view-tab.active {
-        color: #fff;
-        background: var(--gradient-brand);
-        border-color: transparent;
-        box-shadow: 0 10px 26px rgba(99, 102, 241, 0.4);
-        transform: translateY(-1px);
-      }
-      .view-tab.active:hover { transform: translateY(-2px); }
-      .view-tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-      .view-panel { animation: viewFade 0.25s ease; }
-      .view-panel[hidden] { display: none; }
-      @keyframes viewFade {
-        from { opacity: 0; transform: translateY(6px); }
-        to { opacity: 1; transform: none; }
-      }
-
-      /* ---------- "Coming soon" agent card ---------- */
-      .soon-card {
-        margin: 0 0 1.25rem;
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        background: var(--surface-2);
-        border: 2px dashed var(--border-strong);
-        border-radius: var(--radius);
-        padding: 1.2rem 1.4rem;
-      }
-      .soon-badge {
-        flex: 0 0 auto;
-        font-size: 0.72rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        padding: 0.32rem 0.62rem;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: var(--accent);
-      }
-      .soon-title { margin: 0 0 0.3rem; font-weight: 800; font-size: 1.1rem; }
-      .soon-desc { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; }
-      .demo-card.is-soon { cursor: default; }
-      .demo-card.is-soon:hover { transform: none; box-shadow: var(--shadow-sm); }
-      .demo-soon {
-        display: inline-block;
-        font-size: 0.72rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        padding: 0.3rem 0.62rem;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: var(--accent);
-      }
     </style>
   </head>
   <body>
@@ -982,366 +700,291 @@
         >🌗</button>
       </div>
       <div class="hero-inner">
-        <span class="eyebrow">ASEAN Innovation Hub · For customers</span>
-        <h1>Make everyone in your organization an <span class="accent-word">Agent Boss</span>.</h1>
+        <span class="eyebrow">ASEAN Innovation Hub</span>
+        <h1>Making everyone an <span class="accent-word">Agent Boss</span>.</h1>
         <p class="lede">
-          A learning and transformation engine that turns your teams into
-          agent builders — redesigning workflows, shipping real agents, and
-          creating a self-sustaining culture of innovation. Co-designed with
-          Microsoft, run by your people, governed from day one.
+          A 4-phase journey — SEED, LEARN, PACKAGE, SCALE — that takes you
+          from joining the community to shipping production-grade agents
+          across ASEAN. New cohorts onboarded every month.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#panel-framework" data-view-link="framework">
-            See how it works
+          <a class="btn btn-primary" href="#journey">
+            See the journey
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </a>
-          <a class="btn btn-ghost" href="#panel-agents" data-view-link="agents">
-            See the example agents
-          </a>
-          <a class="btn btn-ghost" href="#start">
-            Get started
-          </a>
-          <a class="btn btn-ghost" href="agent-boss-overview.html" target="_blank" rel="noopener">
-            Overview deck
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M7 17 17 7"></path>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
+          <a class="btn btn-ghost" href="agent-boss-playbook/index.html">
+            Open the Playbook
           </a>
         </div>
       </div>
     </header>
 
+    <nav class="tabs-wrap" aria-label="Sections">
+      <div class="tabs-pair">
+        <div class="tabs-group">
+          <span class="tabs-group-label">Agent Boss program</span>
+          <div class="tabs" role="tablist" aria-label="Agent Boss program sections">
+            <a class="tab active" role="tab" aria-current="page" href="index.html">Program overview</a>
+            <a class="tab" role="tab" href="agent-boss-playbook/index.html">Playbook Pathfinder</a>
+            <a class="tab" role="tab" href="solutioning/index.html">Solutioning Boards</a>
+            <a class="tab" role="tab" href="agent-boss-customer/index.html">For Customers</a>
+          </div>
+        </div>
+      </div>
+    </nav>
 
     <main>
-      <!-- Intro lead --------------------------------------------------- -->
-      <section aria-labelledby="intro-title">
+      <!-- Journey strip ------------------------------------------------- -->
+      <section id="journey" aria-labelledby="journey-title">
         <div class="section-head">
           <div>
-            <h2 id="intro-title" class="section-title">Reimagining Agent Boss for your organization</h2>
+            <h2 id="journey-title" class="section-title">The 4-phase journey</h2>
             <p class="section-sub">
-              Agent Boss started as the way we grow our own people into agent
-              builders. This is that same engine, packaged for you — a
-              learning-and-transformation system your teams run themselves, with
-              Microsoft alongside as coach. The goal is simple: make everyone an
-              Agent Boss, and build a system that keeps creating agents long
-              after the first workshop.
+              Cohorts move through four phases. Each phase has its own goals,
+              owners, and tools — and graduation criteria that promote agents
+              from prototype to production.
             </p>
           </div>
         </div>
 
-        <div class="card-grid cols-3">
-          <div class="info-card is-phase-1">
-            <span class="info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-            </span>
-            <p class="info-eyebrow">Redesign</p>
-            <h3 class="info-title">Reimagine the work</h3>
-            <p class="info-desc">
-              Start from the workflow, not the tool. Find the high-friction,
-              high-value processes worth handing to an agent.
+        <div class="journey">
+          <a class="journey-card is-phase-1" href="#phase-1">
+            <span class="journey-num">Phase 1</span>
+            <h3 class="journey-name">SEED</h3>
+            <p class="journey-tag">Start the movement</p>
+            <p class="journey-desc">Set up the ecosystem, onboard candidates, and define success.</p>
+            <span class="journey-meta">Continuous · monthly cohorts</span>
+          </a>
+          <a class="journey-card is-phase-2" href="#phase-2">
+            <span class="journey-num">Phase 2</span>
+            <h3 class="journey-name">LEARN</h3>
+            <p class="journey-tag">Prove it fast</p>
+            <p class="journey-desc">Envision, prototype, pilot — turn ideas into working agents.</p>
+            <span class="journey-meta">1–3 months</span>
+          </a>
+          <a class="journey-card is-phase-3" href="#phase-3">
+            <span class="journey-num">Phase 3</span>
+            <h3 class="journey-name">PACKAGE</h3>
+            <p class="journey-tag">Make it repeatable</p>
+            <p class="journey-desc">Standardize, document, and pass the production gate.</p>
+            <span class="journey-meta">3–5 months</span>
+          </a>
+          <a class="journey-card is-phase-4" href="#phase-4">
+            <span class="journey-num">Phase 4</span>
+            <h3 class="journey-name">SCALE</h3>
+            <p class="journey-tag">Multiply impact</p>
+            <p class="journey-desc">Coach adoption, publish to the registry, go customer-ready.</p>
+            <span class="journey-meta">5–7 months</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Phase 1 ------------------------------------------------------- -->
+      <article id="phase-1" class="phase is-phase-1">
+        <div class="phase-head">
+          <div class="phase-num">1</div>
+          <div class="phase-title-wrap">
+            <h3 class="phase-name">SEED <span class="phase-tag">— Start the Movement</span></h3>
+            <div class="phase-meta-row">
+              <span class="phase-pill is-accent">Continuous · monthly</span>
+              <span class="phase-pill">Owner: per-BU sponsors</span>
+              <span class="phase-pill">Output: onboarded cohort</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-grid">
+          <div class="phase-block">
+            <p class="phase-block-title">What you do</p>
+            <ul>
+              <li>Sign up (and share the sign-up form with your BU) to join the next Agent Boss cohort.</li>
+              <li>Establish cadence and regular touchpoints with the cohort.</li>
+              <li>Agree on success criteria you'll track through the program.</li>
+            </ul>
+          </div>
+          <div class="phase-block">
+            <p class="phase-block-title">What you walk away with</p>
+            <ul>
+              <li>A seat in the ASEAN Agent Boss community (Teams).</li>
+              <li>A defined success rubric for your cohort.</li>
+              <li>Your starting build path (no-code → low-code → pro-code).</li>
+            </ul>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Phase 2 ------------------------------------------------------- -->
+      <article id="phase-2" class="phase is-phase-2">
+        <div class="phase-head">
+          <div class="phase-num">2</div>
+          <div class="phase-title-wrap">
+            <h3 class="phase-name">LEARN <span class="phase-tag">— Prove It Fast</span></h3>
+            <div class="phase-meta-row">
+              <span class="phase-pill is-accent">1–3 months</span>
+              <span class="phase-pill">Owner: Agent Boss + Coach</span>
+              <span class="phase-pill">Output: working prototype</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-grid">
+          <div class="phase-block">
+            <p class="phase-block-title">What you do</p>
+            <ul>
+              <li>Run a Solution Envisioning workshop on a shared board.</li>
+              <li>Prototype with the right build path (CoWork → Studio → Foundry).</li>
+              <li>Pilot with 3–5 people from your own BU; diagnose patterns.</li>
+            </ul>
+          </div>
+          <div class="phase-block">
+            <p class="phase-block-title">What you walk away with</p>
+            <ul>
+              <li>A high-impact use case with measurable KPIs.</li>
+              <li>A working agent prototype validated by real users.</li>
+              <li>Pattern fixes applied — ready to harden in PACKAGE.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase-cta">
+          <a class="phase-link" href="agent-boss-playbook/index.html">
+            Open the Playbook Pathfinder →
+          </a>
+          <a class="phase-link is-secondary" href="solutioning/index.html">
+            Run a Solutioning board →
+          </a>
+        </div>
+      </article>
+
+      <!-- Phase 3 ------------------------------------------------------- -->
+      <article id="phase-3" class="phase is-phase-3">
+        <div class="phase-head">
+          <div class="phase-num">3</div>
+          <div class="phase-title-wrap">
+            <h3 class="phase-name">PACKAGE <span class="phase-tag">— Make It Repeatable</span></h3>
+            <div class="phase-meta-row">
+              <span class="phase-pill is-accent">3–5 months</span>
+              <span class="phase-pill">Owner: Agent Boss + Eng partner</span>
+              <span class="phase-pill">Output: registry-ready package</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-grid">
+          <div class="phase-block">
+            <p class="phase-block-title">What you do</p>
+            <ul>
+              <li>Observe usage; compare deltas and impact on the target metric.</li>
+              <li>Standardize the agent: templates, configs, run-books, docs.</li>
+              <li>Pass the production / repeatability gate with the engineering partner.</li>
+            </ul>
+          </div>
+          <div class="phase-block">
+            <p class="phase-block-title">What you walk away with</p>
+            <ul>
+              <li>A standardized, well-documented agent package.</li>
+              <li>Proof a new team can run the agent without the original builders.</li>
+              <li>A submission ready for the ASEAN Skill Registry.</li>
+            </ul>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Phase 4 ------------------------------------------------------- -->
+      <article id="phase-4" class="phase is-phase-4">
+        <div class="phase-head">
+          <div class="phase-num">4</div>
+          <div class="phase-title-wrap">
+            <h3 class="phase-name">SCALE <span class="phase-tag">— Multiply Impact</span></h3>
+            <div class="phase-meta-row">
+              <span class="phase-pill is-accent">5–7 months</span>
+              <span class="phase-pill">Owner: Coaches + Program leadership</span>
+              <span class="phase-pill">Output: production + customer-ready</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-grid">
+          <div class="phase-block">
+            <p class="phase-block-title">What you do</p>
+            <ul>
+              <li>Coach adoption across new cohorts and BUs.</li>
+              <li>Define which agents are external-ready / customer-ready.</li>
+              <li>Publish to the Agent Registry and expand production footprint.</li>
+            </ul>
+          </div>
+          <div class="phase-block">
+            <p class="phase-block-title">Targets (per deck)</p>
+            <ul>
+              <li>1 production agent in every ASEAN division (11 total).</li>
+              <li>3 customer-referenceable agents.</li>
+              <li>MAU target: 10% of org actively using agents.</li>
+            </ul>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- Graduation ---------------------------------------------------- -->
+      <section aria-labelledby="grad-title">
+        <div class="section-head has-top-gap">
+          <div>
+            <h2 id="grad-title" class="section-title">Graduate as an Agent Boss</h2>
+            <p class="section-sub">
+              Agents that survive PACKAGE earn their builder a Bachelor;
+              agents that scale through SCALE earn a Master.
             </p>
           </div>
-          <div class="info-card is-phase-2">
-            <span class="info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            </span>
-            <p class="info-eyebrow">Skill</p>
-            <h3 class="info-title">Build the capability</h3>
-            <p class="info-desc">
-              Teach builders across every level — any role, high curiosity — to
-              ship agents with Copilot, Copilot Studio, and Azure AI Foundry.
-            </p>
+        </div>
+        <div class="grads">
+          <div class="grad-card">
+            <span class="grad-tag">After Phase 3</span>
+            <h3 class="grad-name">BSc — Bachelor Agent Boss</h3>
+            <p class="grad-desc">An agent with real usage, packaged and repeatable beyond its original team.</p>
           </div>
-          <div class="info-card is-phase-3">
-            <span class="info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3v1M12 17v4M5.6 5.6l.7.7M18.4 5.6l-.7.7M3 12h1M20 12h1"/><circle cx="12" cy="11" r="4"/></svg>
-            </span>
-            <p class="info-eyebrow">Innovate</p>
-            <h3 class="info-title">Make it self-sustaining</h3>
-            <p class="info-desc">
-              Coach-the-coach so the program scales without us — a community that
-              keeps creating, sharing, and reusing agents.
-            </p>
+          <div class="grad-card">
+            <span class="grad-tag">After Phase 4</span>
+            <h3 class="grad-name">MSc — Master Agent Boss</h3>
+            <p class="grad-desc">An agent in production with sustained usage and measurable business impact.</p>
           </div>
         </div>
       </section>
 
-      <!-- View tabs ----------------------------------------------------- -->
-      <div class="view-tabs" role="tablist" aria-label="Agent Boss views">
-        <button id="tab-agents" class="view-tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-agents" data-view="agents">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Agents in action
-        </button>
-        <button id="tab-framework" class="view-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-framework" data-view="framework" tabindex="-1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          Detailed program framework
-        </button>
-      </div>
-
-      <!-- Panel: Agents in action --------------------------------------- -->
-      <section id="panel-agents" class="view-panel" role="tabpanel" aria-labelledby="tab-agents" tabindex="0">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">See the agents in action</h2>
-            <p class="section-sub">
-              Start with proof. These are real agents built by the community — a
-              preview of what your teams will be able to create once the program
-              is up and running. More examples are on the way.
-            </p>
-          </div>
-        </div>
-        <div id="demos" class="card-grid cols-3">
-          <div class="demo-card is-soon">
-            <span class="demo-thumb" aria-hidden="true">
-              <span class="demo-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-            </span>
-            <span class="demo-body">
-              <span class="demo-eyebrow">Example agent</span>
-              <h3 class="demo-name">Agent 1</h3>
-              <p class="demo-desc">An example agent built by the community — a preview of what your teams will be able to create once the program is running.</p>
-              <span class="demo-go demo-soon">Demo coming soon</span>
-            </span>
-          </div>
-          <div class="demo-card is-soon">
-            <span class="demo-thumb" aria-hidden="true">
-              <span class="demo-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-            </span>
-            <span class="demo-body">
-              <span class="demo-eyebrow">Example agent</span>
-              <h3 class="demo-name">Agent 2</h3>
-              <p class="demo-desc">An example agent built by the community — a preview of what your teams will be able to create once the program is running.</p>
-              <span class="demo-go demo-soon">Demo coming soon</span>
-            </span>
-          </div>
-          <div class="demo-card is-soon">
-            <span class="demo-thumb" aria-hidden="true">
-              <span class="demo-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-            </span>
-            <span class="demo-body">
-              <span class="demo-eyebrow">Example agent</span>
-              <h3 class="demo-name">Agent 3</h3>
-              <p class="demo-desc">An example agent built by the community — a preview of what your teams will be able to create once the program is running.</p>
-              <span class="demo-go demo-soon">Demo coming soon</span>
-            </span>
-          </div>
-        </div>
-
-        <div class="soon-card" role="note">
-          <span class="soon-badge">Coming soon</span>
-          <div class="soon-body">
-            <h3 class="soon-title">More agents — including Agent Skills</h3>
-            <p class="soon-desc">
-              We're adding more proof points over time, including a walkthrough of
-              <strong>Agent Skills</strong> — reusable capabilities you compose into
-              agents. Check back here, or ask your Microsoft team for a live look.
-            </p>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Panel: Detailed program framework ------------------------------ -->
-      <section id="panel-framework" class="view-panel" role="tabpanel" aria-labelledby="tab-framework" tabindex="0">
-        <div class="section-head">
-          <div>
-            <h2 class="section-title">What it takes to stand this up</h2>
-            <p class="section-sub">
-              The initiative works best for <strong>frontier organizations</strong> —
-              teams that want to lead with AI, not wait. Behind the demos sits a
-              deliberate build: twelve building blocks across three phases. Each is
-              manageable on its own — but together they're a real operating model:
-              sponsorship, curriculum, coaches, governance, and metrics. Here's what
-              to think through before you start.
-            </p>
-          </div>
-        </div>
-
-        <div class="callout" role="note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          <p>
-            <strong>Executive sponsorship is non-negotiable.</strong> Without a
-            sponsor who owns the outcome, a transformation program becomes "just
-            another training." With one, it becomes how your organization works.
-          </p>
-        </div>
-
-        <!-- Phase 1 -->
+      <!-- Quick links --------------------------------------------------- -->
+      <section aria-labelledby="ql-title">
         <div class="section-head has-top-gap">
           <div>
-            <p class="info-eyebrow">Phase 1 of 3 · Blocks 1–4</p>
-            <h3 class="section-title">Set the direction</h3>
+            <h2 id="ql-title" class="section-title">Tools you'll use</h2>
             <p class="section-sub">
-              Why you're doing this, what success looks like, and who goes first.
+              Two companion tools sit alongside this program — one to choose
+              your build path and one to shape the solution.
             </p>
           </div>
         </div>
-        <div class="journey">
-          <div class="journey-card is-phase-1">
-            <span class="journey-num">Block 01</span>
-            <h4 class="journey-name">Vision &amp; Mission</h4>
-            <p class="journey-tag">Why are you doing this, and why now?</p>
-            <p class="journey-desc">Name the change you're driving — redesigning how work gets done, transforming how people learn at scale, and building a culture that keeps innovating.</p>
-            <span class="journey-meta">Output: a one-line mission</span>
-          </div>
-          <div class="journey-card is-phase-2">
-            <span class="journey-num">Block 02</span>
-            <h4 class="journey-name">Objectives &amp; Goals</h4>
-            <p class="journey-tag">What does success look like in 6–12 months?</p>
-            <p class="journey-desc">Set a few measurable outcomes. Ours: make everyone an Agent Boss, and stand up a learning-and-transformation engine that keeps creating agents.</p>
-            <span class="journey-meta">Output: 3–5 goals</span>
-          </div>
-          <div class="journey-card is-phase-3">
-            <span class="journey-num">Block 03</span>
-            <h4 class="journey-name">Target Community</h4>
-            <p class="journey-tag">Who joins first — which roles, teams, regions?</p>
-            <p class="journey-desc">Pick the frontier teams to start with. Breadth comes later; momentum starts with the willing and the well-sponsored.</p>
-            <span class="journey-meta">Output: your first cohort</span>
-          </div>
-          <div class="journey-card is-phase-4">
-            <span class="journey-num">Block 04</span>
-            <h4 class="journey-name">Skills &amp; Competencies</h4>
-            <p class="journey-tag">What capabilities must people build?</p>
-            <p class="journey-desc">Map where your builders are today versus where you need them — from everyday Copilot use to building and shipping real agents.</p>
-            <span class="journey-meta">Output: a skills baseline</span>
-          </div>
-        </div>
-
-        <!-- Phase 2 -->
-        <div class="section-head has-top-gap">
-          <div>
-            <p class="info-eyebrow">Phase 2 of 3 · Blocks 5–8</p>
-            <h3 class="section-title">Design the program</h3>
-            <p class="section-sub">
-              What people learn, how it's delivered, who runs it, and what it's
-              built on.
+        <div class="quicklinks">
+          <a class="ql-card" href="agent-boss-playbook/index.html">
+            <span class="ql-eyebrow">Phase 2 · LEARN</span>
+            <h3 class="ql-title">Playbook Pathfinder</h3>
+            <p class="ql-desc">
+              Decide which Agent Boss path to use (CoWork, Builder, Skills,
+              Studio, Foundry) and whether to build an Agent or a Skill.
             </p>
-          </div>
-        </div>
-        <div class="journey">
-          <div class="journey-card is-phase-1">
-            <span class="journey-num">Block 05</span>
-            <h4 class="journey-name">Curriculum &amp; Content</h4>
-            <p class="journey-tag">What will people actually learn, and how?</p>
-            <p class="journey-desc">Assemble learning modules, build-path playbooks, and a use-case intake so real work — not toy examples — drives the learning.</p>
-            <span class="journey-meta">Output: learning paths</span>
-          </div>
-          <div class="journey-card is-phase-2">
-            <span class="journey-num">Block 06</span>
-            <h4 class="journey-name">Delivery &amp; Cadence</h4>
-            <p class="journey-tag">Through what channels, and how often?</p>
-            <p class="journey-desc">Set the rhythm: hands-on prototyping workshops, monthly community calls, and regular clinics to keep builders moving.</p>
-            <span class="journey-meta">Output: a recurring cadence</span>
-          </div>
-          <div class="journey-card is-phase-3">
-            <span class="journey-num">Block 07</span>
-            <h4 class="journey-name">Roles &amp; Ownership</h4>
-            <p class="journey-tag">Who owns and runs the program?</p>
-            <p class="journey-desc">Stand up a small core — a Chief Agent Officer, Agent Coaches, a Program Manager, and an executive sponsor who owns the outcome.</p>
-            <span class="journey-meta">Output: a named core team</span>
-          </div>
-          <div class="journey-card is-phase-4">
-            <span class="journey-num">Block 08</span>
-            <h4 class="journey-name">Resources &amp; Budget</h4>
-            <p class="journey-tag">What tools, platforms, and funding are needed?</p>
-            <p class="journey-desc">Build on Microsoft 365 Copilot, Copilot Studio, and Azure AI Foundry inside a governed platform, with clear tool maps and guardrails.</p>
-            <span class="journey-meta">Output: a funded, governed toolset</span>
-          </div>
-        </div>
-
-        <!-- Phase 3 -->
-        <div class="section-head has-top-gap">
-          <div>
-            <p class="info-eyebrow">Phase 3 of 3 · Blocks 9–12</p>
-            <h3 class="section-title">Govern and scale</h3>
-            <p class="section-sub">
-              How you sequence it, how you measure it, and what must be true to
-              scale.
+            <span class="ql-go">Open Pathfinder →</span>
+          </a>
+          <a class="ql-card" href="solutioning/index.html">
+            <span class="ql-eyebrow">Phase 2 · LEARN</span>
+            <h3 class="ql-title">Solutioning Boards</h3>
+            <p class="ql-desc">
+              Guided canvases for your envisioning workshops — map the
+              problem, users, data and guardrails before you build.
             </p>
-          </div>
-        </div>
-        <div class="journey">
-          <div class="journey-card is-phase-1">
-            <span class="journey-num">Block 09</span>
-            <h4 class="journey-name">Timeline &amp; Milestones</h4>
-            <p class="journey-tag">How do you get from pilot to scale?</p>
-            <p class="journey-desc">Sequence it: finalize the plan, run the coaches' workshop, then play results back to leadership at around four to six weeks.</p>
-            <span class="journey-meta">Output: a phased timeline</span>
-          </div>
-          <div class="journey-card is-phase-2">
-            <span class="journey-num">Block 10</span>
-            <h4 class="journey-name">Success Metrics &amp; KPIs</h4>
-            <p class="journey-tag">How will you know it's working?</p>
-            <p class="journey-desc">Track community growth, skills created and used, and agents shipped — the signals that learning is turning into real, used agents.</p>
-            <span class="journey-meta">Output: a KPI set</span>
-          </div>
-          <div class="journey-card is-phase-3">
-            <span class="journey-num">Block 11</span>
-            <h4 class="journey-name">Decisions &amp; Requirements</h4>
-            <p class="journey-tag">What must be true before you scale?</p>
-            <p class="journey-desc">Lock the must-haves: security and governance, an adoption dashboard, and the governed platform your builders work inside.</p>
-            <span class="journey-meta">Output: prerequisites agreed</span>
-          </div>
-          <div class="journey-card is-phase-4">
-            <span class="journey-num">Block 12</span>
-            <h4 class="journey-name">Risks &amp; Dependencies</h4>
-            <p class="journey-tag">What could stall it, and who owns that?</p>
-            <p class="journey-desc">Name the blockers up front — sponsorship, access, capacity, change fatigue — and assign an owner to each before they bite.</p>
-            <span class="journey-meta">Output: a risk register</span>
-          </div>
-        </div>
-
-        <!-- You're in the driver's seat; we coach alongside -->
-        <div class="section-head has-top-gap">
-          <div>
-            <h3 class="section-title">You don't do this alone</h3>
-            <p class="section-sub">
-              It's a lot to stand up — so you stay in the driver's seat and we
-              coach alongside. We help you get started, then coach your coaches
-              so the program is yours to run.
-            </p>
-          </div>
-        </div>
-        <ul class="help-list">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Run one workshop with you</strong> — a hands-on prototyping session on your real use cases.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Train your Agent Coaches</strong> — coach-the-coach so your team can carry it forward.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Share content &amp; playbooks</strong> — learning modules, intake templates, and reusable packages.</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>A governed setup, mapped with you</strong> — guardrails and the platform picture so your team builds safely, on your own tenant.</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- CTA ----------------------------------------------------------- -->
-      <section id="start" aria-labelledby="cta-title">
-        <div class="cta-band">
-          <h2 id="cta-title">Ready to make your teams Agent Bosses?</h2>
-          <p>
-            Bring an executive sponsor and a few curious builders — we'll help
-            you stand up the roles, run the first workshop, and coach your
-            coaches, then hand it to your team to run. The goal: within about six
-            weeks, working agents in hand and a learning-and-transformation
-            engine that keeps going.
-          </p>
-          <p class="cta-deck">
-            Want a leave-behind for your leadership?
-            <a href="agent-boss-overview.html" target="_blank" rel="noopener">Open the overview deck ↗</a>
-            <span aria-hidden="true">·</span>
-            <a href="agent-boss-overview.html" download>Download</a>
-          </p>
+            <span class="ql-go">Open boards →</span>
+          </a>
         </div>
       </section>
     </main>
@@ -1371,59 +1014,6 @@
         root.setAttribute("data-theme", next);
         localStorage.setItem(THEME_KEY, next);
       });
-
-      // ---------- In-page view tabs ----------
-      (function () {
-        const tabs = Array.from(document.querySelectorAll(".view-tab"));
-        const panels = {
-          agents: document.getElementById("panel-agents"),
-          framework: document.getElementById("panel-framework"),
-        };
-        if (!tabs.length || !panels.agents || !panels.framework) return;
-
-        function activate(view, focusTab) {
-          if (!panels[view]) return;
-          tabs.forEach((tab) => {
-            const isActive = tab.dataset.view === view;
-            tab.classList.toggle("active", isActive);
-            tab.setAttribute("aria-selected", isActive ? "true" : "false");
-            tab.tabIndex = isActive ? 0 : -1;
-            if (isActive && focusTab) tab.focus();
-          });
-          Object.keys(panels).forEach((key) => {
-            panels[key].hidden = key !== view;
-          });
-        }
-
-        function viewFromHash(hash) {
-          const id = (hash || "").replace(/^#/, "");
-          if (["framework", "panel-framework", "journey"].includes(id)) return "framework";
-          if (["agents", "panel-agents", "demos"].includes(id)) return "agents";
-          return null;
-        }
-
-        tabs.forEach((tab, i) => {
-          tab.addEventListener("click", () => activate(tab.dataset.view));
-          tab.addEventListener("keydown", (e) => {
-            if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
-            e.preventDefault();
-            const dir = e.key === "ArrowRight" ? 1 : -1;
-            const next = tabs[(i + dir + tabs.length) % tabs.length];
-            activate(next.dataset.view, true);
-          });
-        });
-
-        document.querySelectorAll("[data-view-link]").forEach((link) => {
-          link.addEventListener("click", () => activate(link.dataset.viewLink));
-        });
-
-        window.addEventListener("hashchange", () => {
-          const v = viewFromHash(location.hash);
-          if (v) activate(v);
-        });
-
-        activate(viewFromHash(location.hash) || "agents");
-      })();
     </script>
   </body>
 </html>

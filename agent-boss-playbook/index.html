@@ -1,0 +1,1479 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agent Boss Playbook Pathfinder</title>
+    <meta
+      name="description"
+      content="Decide which Agent Boss path to use and what shape each capability should take — Tool, Skill, or Subagent — using the Agent Boss Playbook decision tree."
+    />
+    <meta property="og:title" content="Agent Boss Playbook Pathfinder" />
+    <meta
+      property="og:description"
+      content="Pick your Agent Boss path, then decide whether each capability is a Tool, a Skill, or a Subagent."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2306b6d4'/%3E%3Cstop offset='100%25' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='62' font-family='Helvetica' font-weight='800' fill='white'%3EA%3C/text%3E%3C/svg%3E" />
+    <style>
+      :root {
+        --bg: #f6f9fc;
+        --surface: #ffffff;
+        --surface-2: #f1f5f9;
+        --border: #e6ecf3;
+        --border-strong: #cbd5e1;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --text-subtle: #94a3b8;
+        --brand-1: #06b6d4;
+        --brand-2: #6366f1;
+        --brand-3: #ec4899;
+        --accent: var(--brand-2);
+        --accent-soft: rgba(99, 102, 241, 0.10);
+        --accent-soft-2: rgba(99, 102, 241, 0.18);
+        --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04),
+          0 1px 3px rgba(15, 23, 42, 0.04);
+        --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.06),
+          0 2px 6px rgba(15, 23, 42, 0.04);
+        --shadow-lg: 0 14px 36px rgba(15, 23, 42, 0.10),
+          0 6px 18px rgba(15, 23, 42, 0.06);
+        --radius: 16px;
+        --radius-sm: 10px;
+        --radius-lg: 24px;
+        --gradient-brand: linear-gradient(
+          135deg,
+          var(--brand-1) 0%,
+          var(--brand-2) 55%,
+          var(--brand-3) 100%
+        );
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0a0f1f;
+          --surface: #111827;
+          --surface-2: #18223a;
+          --border: #1f2a44;
+          --border-strong: #2a3656;
+          --text: #e8ecf5;
+          --text-muted: #94a3b8;
+          --text-subtle: #64748b;
+          --brand-1: #22d3ee;
+          --brand-2: #818cf8;
+          --brand-3: #f472b6;
+          --accent: var(--brand-2);
+          --accent-soft: rgba(129, 140, 248, 0.16);
+          --accent-soft-2: rgba(129, 140, 248, 0.26);
+          --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+          --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+          --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.5);
+          --gradient-brand: linear-gradient(
+            135deg,
+            #155e75 0%,
+            #312e81 55%,
+            #831843 100%
+          );
+        }
+      }
+
+      [data-theme="dark"] {
+        --bg: #0a0f1f;
+        --surface: #111827;
+        --surface-2: #18223a;
+        --border: #1f2a44;
+        --border-strong: #2a3656;
+        --text: #e8ecf5;
+        --text-muted: #94a3b8;
+        --text-subtle: #64748b;
+        --brand-1: #22d3ee;
+        --brand-2: #818cf8;
+        --brand-3: #f472b6;
+        --accent: var(--brand-2);
+        --accent-soft: rgba(129, 140, 248, 0.16);
+        --accent-soft-2: rgba(129, 140, 248, 0.26);
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+        --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.5);
+        --gradient-brand: linear-gradient(
+          135deg,
+          #155e75 0%,
+          #312e81 55%,
+          #831843 100%
+        );
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          system-ui, "Helvetica Neue", Arial, sans-serif;
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a { color: var(--accent); }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: var(--gradient-brand);
+        color: #fff;
+        isolation: isolate;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(60% 100% at 0% 0%, rgba(255, 255, 255, 0.22), transparent 60%),
+          radial-gradient(60% 100% at 100% 100%, rgba(0, 0, 0, 0.20), transparent 55%);
+        pointer-events: none;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.10) 1px, transparent 1px);
+        background-size: 28px 28px;
+        -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
+        pointer-events: none;
+      }
+      .top-bar {
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        z-index: 5;
+        display: flex;
+        gap: 0.5rem;
+      }
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        color: #fff;
+        cursor: pointer;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+        transition: background-color 0.15s ease, transform 0.15s ease;
+      }
+      .icon-btn:hover { background: rgba(255, 255, 255, 0.26); }
+      .icon-btn:active { transform: scale(0.94); }
+      .icon-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4.5rem 1.5rem 3.5rem;
+      }
+      .hero h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        max-width: 22ch;
+      }
+      .hero h1 .accent-word {
+        background: linear-gradient(90deg, #ffffff, #fde68a 60%, #fda4af);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .hero p.lede {
+        margin: 0 0 1.8rem;
+        font-size: clamp(1rem, 1.4vw, 1.18rem);
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.88);
+        max-width: 60ch;
+      }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.2rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.92rem;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: transform 0.15s ease, background-color 0.15s ease,
+          border-color 0.15s ease, box-shadow 0.15s ease;
+        font-family: inherit;
+      }
+      .btn:active { transform: translateY(1px); }
+      .btn-primary {
+        background: #ffffff;
+        color: #0f172a;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+      }
+      .btn-primary:hover { background: #f1f5f9; }
+      .btn-ghost {
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.30);
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+      }
+      .btn-ghost:hover { background: rgba(255, 255, 255, 0.14); }
+
+      /* ---------- Tabs ---------- */
+      .tabs-wrap {
+        max-width: 1200px;
+        margin: 2.5rem auto 0;
+        padding: 0 1.5rem;
+        position: relative;
+        z-index: 4;
+      }
+      .tabs {
+        display: flex;
+        gap: 0.35rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.32rem;
+        box-shadow: var(--shadow-md);
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
+      .tab {
+        flex: 0 0 auto;
+        padding: 0.55rem 1rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        border-radius: 999px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      .tab:hover { color: var(--text); background: var(--surface-2); }
+      .tab.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .tab.active:hover { background: var(--accent); color: #fff; }
+
+      /* Single grouped pill-strip for the Agent Boss program
+         (program overview / playbook / boards / for customers). */
+      .tabs-pair {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        gap: 0.9rem;
+      }
+      .tabs-group { display: flex; flex-direction: column; gap: 0.3rem; }
+      .tabs-group-label {
+        align-self: flex-start;
+        margin-left: 0.5rem;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #fff;
+        background: rgba(15, 23, 42, 0.55);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        padding: 0.18rem 0.55rem;
+        border-radius: 999px;
+      }
+
+      /* ---------- Main ---------- */
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 3rem;
+      }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        flex-wrap: wrap;
+      }
+      .section-title {
+        font-size: 1.45rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0;
+      }
+      .section-sub {
+        color: var(--text-muted);
+        font-size: 0.93rem;
+        margin: 0.25rem 0 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      }
+      @media (max-width: 880px) {
+        .grid-2 { grid-template-columns: 1fr; }
+      }
+
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.4rem;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .principle {
+        margin: 0 0 1rem;
+        padding: 0.8rem 1rem;
+        border-radius: var(--radius-sm);
+        background: var(--accent-soft);
+        color: var(--text);
+        border: 1px solid var(--border);
+        font-size: 0.92rem;
+      }
+      .principle strong { color: var(--accent); }
+
+      .progress {
+        display: flex;
+        gap: 0.3rem;
+        margin-bottom: 1rem;
+      }
+      .progress-pip {
+        flex: 1 1 0;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--surface-2);
+      }
+      .progress-pip.done { background: var(--accent); }
+      .progress-pip.current {
+        background: var(--accent);
+        opacity: 0.55;
+      }
+
+      .question-step {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .question-title {
+        margin: 0.4rem 0 0.4rem;
+        font-size: 1.18rem;
+        font-weight: 700;
+        letter-spacing: -0.005em;
+      }
+      .question-help {
+        margin: 0 0 1rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .options {
+        display: grid;
+        gap: 0.5rem;
+      }
+      .options.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .options.cols-1 { grid-template-columns: 1fr; }
+      .opt-btn {
+        text-align: left;
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.85rem 1rem;
+        font-family: inherit;
+        font-size: 0.93rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color 0.15s ease, background-color 0.15s ease,
+          transform 0.15s ease, box-shadow 0.15s ease;
+      }
+      .opt-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .opt-btn:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .opt-btn .opt-sub {
+        display: block;
+        margin-top: 0.2rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text-muted);
+      }
+      .opt-btn:hover .opt-sub { color: var(--accent); }
+
+      .controls-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        margin-top: 1rem;
+      }
+      .ghost-btn {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 0.4rem 0.85rem;
+        font-family: inherit;
+        font-size: 0.82rem;
+        cursor: pointer;
+      }
+      .ghost-btn:hover { color: var(--text); border-color: var(--border-strong); }
+      .ghost-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+      .trail {
+        margin-top: 1rem;
+        padding: 0.8rem;
+        border: 1px dashed var(--border);
+        border-radius: var(--radius-sm);
+        background: var(--surface-2);
+        font-size: 0.83rem;
+        color: var(--text-muted);
+      }
+      .trail strong { color: var(--text); font-weight: 600; }
+      .trail-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+      .trail-pill {
+        padding: 0.18rem 0.55rem;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        font-size: 0.74rem;
+        color: var(--text);
+        font-weight: 600;
+      }
+      .trail-pill .ans { color: var(--accent); }
+
+      /* ---------- Result ---------- */
+      .result {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.4rem;
+        background: var(--surface);
+        box-shadow: var(--shadow-md);
+      }
+      .result::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gradient-brand);
+      }
+      .result-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+        margin-bottom: 0.75rem;
+      }
+      .result-avatar {
+        width: 44px;
+        height: 44px;
+        flex: 0 0 auto;
+        border-radius: 12px;
+        background: var(--gradient-brand);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        box-shadow: 0 6px 16px rgba(99, 102, 241, 0.28);
+      }
+      .result-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        line-height: 1.25;
+        letter-spacing: -0.005em;
+      }
+      .result-sub {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-top: 0.18rem;
+      }
+
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.85rem;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.74rem;
+        font-weight: 700;
+        border-radius: 999px;
+        line-height: 1.3;
+        letter-spacing: 0.02em;
+        background: var(--accent-soft);
+        color: var(--accent);
+        border: 1px solid var(--accent-soft-2);
+      }
+      .badge-tech { background: var(--accent-soft); color: var(--accent); }
+      .badge-build {
+        background: rgba(16, 185, 129, 0.12);
+        color: #059669;
+        border-color: rgba(16, 185, 129, 0.30);
+      }
+      [data-theme="dark"] .badge-build { color: #34d399; }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .badge-build { color: #34d399; }
+      }
+      .badge-time {
+        background: var(--surface-2);
+        color: var(--text-muted);
+        border-color: var(--border);
+      }
+      .badge-persona {
+        background: rgba(236, 72, 153, 0.10);
+        color: #be185d;
+        border-color: rgba(236, 72, 153, 0.28);
+      }
+      [data-theme="dark"] .badge-persona { color: #f472b6; }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .badge-persona { color: #f472b6; }
+      }
+
+      .result h4 {
+        margin: 1rem 0 0.4rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+      }
+      .result ul {
+        margin: 0;
+        padding-left: 1.15rem;
+      }
+      .result li { margin-bottom: 0.35rem; font-size: 0.93rem; }
+
+      .callout {
+        margin-top: 0.9rem;
+        padding: 0.75rem 0.9rem;
+        border-radius: var(--radius-sm);
+        background: rgba(245, 158, 11, 0.10);
+        border: 1px solid rgba(245, 158, 11, 0.30);
+        color: var(--text);
+        font-size: 0.86rem;
+      }
+      .callout strong { color: #b45309; }
+      [data-theme="dark"] .callout strong { color: #fbbf24; }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .callout strong { color: #fbbf24; }
+      }
+      .callout ul { margin: 0.4rem 0 0; padding-left: 1.15rem; }
+
+      .links-row {
+        margin-top: 0.9rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .link-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-decoration: none;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+      .link-pill:hover { background: var(--accent-soft-2); }
+      .link-pill.disabled {
+        color: var(--text-muted);
+        background: var(--surface-2);
+        border: 1px dashed var(--border-strong);
+        cursor: not-allowed;
+      }
+
+      .restart-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1rem;
+      }
+      .restart-btn {
+        background: var(--accent);
+        color: #fff;
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        padding: 0.55rem 1rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        font-size: 0.86rem;
+      }
+      .restart-btn:hover { filter: brightness(1.05); }
+
+      /* ---------- Right column: paths summary ---------- */
+      .paths {
+        display: grid;
+        gap: 0.7rem;
+      }
+      .path-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.9rem 1rem;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+      }
+      .path-card:hover {
+        border-color: var(--accent);
+        box-shadow: var(--shadow-sm);
+      }
+      .path-card.is-recommended {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-soft);
+      }
+      .path-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+      .path-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 0.78rem;
+      }
+      .path-title {
+        font-weight: 700;
+        font-size: 0.96rem;
+        flex: 1 1 auto;
+      }
+      .path-meta {
+        margin-top: 0.4rem;
+        display: flex;
+        gap: 0.35rem;
+        flex-wrap: wrap;
+      }
+      .meta-pill {
+        font-size: 0.7rem;
+        padding: 0.16rem 0.5rem;
+        border-radius: 999px;
+        background: var(--surface-2);
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+        font-weight: 600;
+      }
+      .path-desc {
+        margin: 0.45rem 0 0;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      .step-counter {
+        cursor: default;
+        border-style: dashed;
+      }
+
+      .panel-head-tight { margin-bottom: 0.4rem; }
+      .panel-head-tight .section-title { font-size: 1.1rem; }
+
+      footer {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 3rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.82rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: space-between;
+      }
+      footer a { color: var(--text-muted); text-decoration: none; }
+      footer a:hover { color: var(--accent); }
+
+      @media (max-width: 640px) {
+        .hero-inner { padding: 3rem 1.25rem 2.5rem; }
+        main { padding: 1.5rem 1.25rem 3rem; }
+        .options.cols-2 { grid-template-columns: 1fr; }
+      }
+
+      /* ===== Build-unit result block (shown inside a build-path result) ===== */
+      .unit-result {
+        margin: 1.1rem 0 0;
+        padding: 0.95rem 1rem;
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: var(--radius-sm);
+        background: var(--accent-soft);
+      }
+      .unit-result-head { display: flex; align-items: center; gap: 0.6rem; }
+      .unit-result-icon { font-size: 1.5rem; line-height: 1; }
+      .unit-result-kicker {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+        font-weight: 700;
+      }
+      .unit-result-name { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+      .unit-result-sub { margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text); }
+      .unit-result-why {
+        margin: 0.55rem 0 0;
+        padding-left: 1.1rem;
+        font-size: 0.88rem;
+        line-height: 1.55;
+      }
+      .unit-result-note {
+        margin: 0.6rem 0 0;
+        padding-top: 0.55rem;
+        border-top: 1px dashed var(--border);
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+      .unit-result-note a { color: var(--accent); font-weight: 600; text-decoration: none; }
+      .unit-result-note a:hover { text-decoration: underline; }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; animation: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="top-bar">
+        <button
+          id="themeToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle colour theme"
+          title="Toggle colour theme"
+        >🌗</button>
+      </div>
+      <div class="hero-inner">
+        <h1>
+          Agent Boss <span class="accent-word">Pathfinder</span>
+        </h1>
+        <p class="lede">
+          One guided flow: find your Agent Boss build path — then, if you're
+          building, decide whether each capability should be a Tool, a Skill, or
+          a Subagent.
+        </p>
+        <div class="cta-row">
+          <a
+            class="btn btn-primary"
+            href="#decision"
+          >
+            Start the decision tree
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs-wrap" aria-label="Sections">
+      <div class="tabs-pair">
+        <div class="tabs-group">
+          <span class="tabs-group-label">Agent Boss program</span>
+          <div class="tabs" role="tablist" aria-label="Agent Boss program sections">
+            <a class="tab" role="tab" href="../index.html">Program overview</a>
+            <a class="tab active" role="tab" aria-current="page" href="../agent-boss-playbook/index.html">Playbook Pathfinder</a>
+            <a class="tab" role="tab" href="../solutioning/index.html">Solutioning Boards</a>
+            <a class="tab" role="tab" href="../agent-boss-customer/index.html">For Customers</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main id="decision">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Decision tree</h2>
+          <p class="section-sub">
+            Answer a few questions to get a recommended path, build type, and
+            access links.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel" aria-label="Decision tree">
+          <div class="principle">
+            <strong>Playbook principle.</strong> Start at the lowest level that
+            works. Escalate only when you hit a real ceiling.
+          </div>
+
+          <div id="progress" class="progress" aria-hidden="true"></div>
+
+          <section id="questionBlock">
+            <div class="question-step" id="questionStep">Step 1</div>
+            <h3 class="question-title" id="questionTitle"></h3>
+            <p class="question-help" id="questionHelp"></p>
+            <div class="options" id="options"></div>
+            <div class="controls-row">
+              <button id="backBtn" class="ghost-btn" type="button" disabled>← Back</button>
+              <span class="ghost-btn step-counter" id="stepCount"></span>
+            </div>
+          </section>
+
+          <section id="resultBlock" class="result" hidden aria-live="polite">
+            <div class="result-head">
+              <span class="result-avatar" id="resultAvatar">P?</span>
+              <div>
+                <div class="result-title" id="resultTitle"></div>
+                <div class="result-sub" id="resultSub"></div>
+              </div>
+            </div>
+            <div class="badges">
+              <span class="badge badge-tech" id="badgeTech"></span>
+              <span class="badge badge-build" id="badgeBuild"></span>
+              <span class="badge badge-time" id="badgeTime"></span>
+              <span class="badge badge-persona" id="badgePersona"></span>
+            </div>
+
+            <h4>Why this path</h4>
+            <ul id="resultWhy"></ul>
+
+            <div class="callout" id="resultCaveats" hidden>
+              <strong>Heads up.</strong>
+              <ul id="resultCaveatsList"></ul>
+            </div>
+
+            <div class="unit-result" id="unitResult" hidden>
+              <div class="unit-result-head">
+                <span class="unit-result-icon" id="unitIcon" aria-hidden="true"></span>
+                <div>
+                  <div class="unit-result-kicker">Then build it as a</div>
+                  <div class="unit-result-name" id="unitName"></div>
+                </div>
+              </div>
+              <p class="unit-result-sub" id="unitSub"></p>
+              <ul class="unit-result-why" id="unitWhy"></ul>
+              <p class="unit-result-note" id="unitNote" hidden></p>
+            </div>
+
+            <h4 id="resultLinksHeading">Get started / request access</h4>
+            <div class="links-row" id="resultLinks"></div>
+
+            <div class="restart-row">
+              <button id="restartBtn" class="restart-btn" type="button">Restart</button>
+            </div>
+          </section>
+
+          <div class="trail" id="trail" hidden>
+            <strong>Your route:</strong>
+            <div class="trail-row" id="trailRow"></div>
+          </div>
+        </article>
+
+        <aside class="panel" aria-label="The five Agent Boss paths">
+          <div class="section-head panel-head-tight">
+            <div>
+              <h2 class="section-title">The five paths</h2>
+              <p class="section-sub">Order and personas as defined in the playbook.</p>
+            </div>
+          </div>
+          <div class="paths" id="pathsList"></div>
+        </aside>
+      </div>
+
+    </main>
+
+    <footer>
+      <span
+        >Built &amp; maintained by Tri Nguyen · Contact
+        <a href="mailto:nguyentri@microsoft.com">nguyentri@microsoft.com</a>
+        for anything related to this site</span
+      >
+    </footer>
+
+
+    <script>
+      // ---------- Theme (shared with registry) ----------
+      const THEME_KEY = "agent-skill-theme";
+      const themeToggle = document.getElementById("themeToggle");
+      function applyTheme(theme) {
+        if (theme === "dark" || theme === "light") {
+          document.documentElement.setAttribute("data-theme", theme);
+        } else {
+          document.documentElement.removeAttribute("data-theme");
+        }
+      }
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored) applyTheme(stored);
+      themeToggle.addEventListener("click", () => {
+        const explicit = document.documentElement.getAttribute("data-theme");
+        const current =
+          explicit ||
+          (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        const next = current === "dark" ? "light" : "dark";
+        applyTheme(next);
+        localStorage.setItem(THEME_KEY, next);
+      });
+
+      // ---------- Path catalogue (ordered by build effort + personas) ----------
+      const PATHS = {
+        path1: {
+          number: 1,
+          shortKey: "P1",
+          title: "Copilot CoWork",
+          time: "Minutes",
+          persona: "Anyone",
+          buildType: "Try-out (no build)",
+          summary: "Try ideas instantly inside Copilot CoWork (M365 task agent) — no engineering effort.",
+          why: [
+            "Validates the idea fastest with zero build investment.",
+            "Copilot CoWork: task-based agent across M365 apps.",
+            "Right starting point: start at the lowest level that works.",
+          ],
+          caveats: [
+            "Each run is task-scoped — not a persistent, shareable agent.",
+            "For harder web flows or multi-step automation, escalate to Path 3 (Agent Skills with Microsoft Scout).",
+          ],
+          links: [
+            {
+              label: "Open Copilot CoWork (aka.ms/Cowork)",
+              href: "https://aka.ms/Cowork",
+            },
+          ],
+        },
+        path2: {
+          number: 2,
+          shortKey: "P2",
+          title: "M365 Agent Builder",
+          time: "Hours",
+          persona: "Biz users",
+          buildType: "Agent (declarative)",
+          summary: "Declarative agent grounded in SharePoint and M365 knowledge, published to Copilot.",
+          why: [
+            "Best when the agent mainly answers from M365 / SharePoint knowledge.",
+            "Low-code, ships into Copilot chat where users already work.",
+          ],
+          caveats: [
+            "Limited to declarative behavior — no deep multi-step actions or computer use.",
+          ],
+          links: [],
+        },
+        path3: {
+          number: 3,
+          shortKey: "P3",
+          title: "Agent Skills (Microsoft Scout)",
+          time: "Hours–Weeks",
+          persona: "Anyone (no dev required)",
+          buildType: "Agent Skill (reusable)",
+          summary: "Author custom skills with Microsoft Scout — a personal agent that lives on your machine, with computer use, web automation, and access to your file system.",
+          why: [
+            "Stronger computer use and web browsing — use this when Path 1 hits its ceiling.",
+            "Personal agent on your machine: can read/write your local file system.",
+            "Skills are reusable — one skill can power many host agents.",
+            "Authoring uses natural-language scaffolding — simple skills can ship in hours.",
+            "Comes before Copilot Studio in the recommended flow.",
+          ],
+          caveats: [
+            "Complex skills (multi-step automation, fragile sites) still take days–weeks to harden.",
+            "Runs locally — your machine needs to be on for the agent to work.",
+            "Microsoft Scout is still early-stage, so expect bugs and breaking changes between releases.",
+          ],
+          links: [
+            {
+              label: "Microsoft Scout (aka.ms/scout)",
+              href: "https://aka.ms/scout",
+              source: "deck",
+            },
+            {
+              label: "Microsoft Scout (announcement)",
+              href: "https://www.microsoft.com/en-us/microsoft-365/blog/2026/06/02/introducing-microsoft-scout-your-always-on-personal-agent/",
+              source: "field",
+            },
+          ],
+        },
+        path4: {
+          number: 4,
+          shortKey: "P4",
+          title: "Copilot Studio",
+          time: "Days",
+          persona: "Makers",
+          buildType: "Agent (low-code workflow)",
+          summary: "Low-code agent with topics, triggers, and 1,400+ Power Platform connectors for business actions.",
+          why: [
+            "Best for multi-step workflows across CRM, ERP, HR, ticketing.",
+            "Publish to Teams, Web, or M365 Copilot.",
+            "Choose this if Agent Skills (Path 3) is overkill but Agent Builder (Path 2) isn't enough.",
+          ],
+          caveats: [
+            "Structured flow paradigm — not for computer use or deep custom reasoning.",
+            "Check your organisation's process for provisioning a Copilot Studio environment before you start building.",
+          ],
+          links: [
+            {
+              label: "Microsoft Copilot Studio",
+              href: "https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio",
+            },
+          ],
+        },
+        path5: {
+          number: 5,
+          shortKey: "P5",
+          title: "Foundry (Agent Service)",
+          time: "Weeks+",
+          persona: "Engineers",
+          buildType: "Agent + reusable skills",
+          summary: "Host agents built with any model or framework — Agent Framework, LangGraph, Semantic Kernel.",
+          why: [
+            "For production-scale, multi-agent, or non-Microsoft-model workloads.",
+            "Enterprise governance by default: Entra Agent ID, evaluations, guardrails.",
+            "Playbook guidance: do not start here — graduate after proving the prototype.",
+          ],
+          caveats: [
+            "Highest dev investment — not the fastest way to prototype.",
+            "No self-serve access — provisioning goes through your organisation's standard Azure request process.",
+          ],
+          links: [
+            {
+              label: "Azure AI Foundry",
+              href: "https://azure.microsoft.com/en-us/products/ai-foundry",
+            },
+          ],
+        },
+      };
+
+      // ---------- Question flow ----------
+      const PERSONAS = [
+        { value: "anyone",   label: "Anyone",      sub: "Just exploring or validating an idea." },
+        { value: "biz",      label: "Business user", sub: "Comfortable in M365; not a developer." },
+        { value: "maker",    label: "Maker",       sub: "Low-code: Power Platform, Copilot Studio." },
+        { value: "engineer", label: "Engineer",    sub: "Code, automation, GitHub, scripting." },
+      ];
+
+      const QUESTIONS = {
+        persona: {
+          id: "persona",
+          title: "Who is going to build this?",
+          help: "From the playbook's persona spectrum — start here so we recommend a path that's actually buildable.",
+          options: PERSONAS,
+          cols: 1,
+        },
+        validate: {
+          id: "validate",
+          title: "Are you just validating the idea right now?",
+          help: "Minutes of effort to test if it's worth building anything at all.",
+          options: [
+            { value: "yes", label: "Yes — just want to see if it works", sub: "Fast experiment, no commitment." },
+            { value: "no",  label: "No — I'm ready to build something",  sub: "Move past Path 1." },
+          ],
+          cols: 1,
+        },
+        scope: {
+          id: "scope",
+          title: "What does the solution mainly need to do?",
+          help: "Pick the closest match to its primary job.",
+          options: [
+            { value: "knowledge",  label: "Answer from M365 / SharePoint knowledge", sub: "Retrieval and guidance over docs." },
+            { value: "computer",   label: "Use the computer or browser",             sub: "Web automation, computer-use, or file-system access." },
+            { value: "workflow",   label: "Run workflows across business systems",   sub: "CRM, ERP, HR, ticketing via connectors." },
+            { value: "scale",      label: "Multi-agent / any model / production-scale", sub: "Governance, orchestration, custom frameworks." },
+          ],
+          cols: 1,
+        },
+        unitKind: {
+          id: "unitKind",
+          title: "What shape should this capability take?",
+          help: "Same idea as the path tree — reach for the lightest unit that does the job.",
+          options: [
+            { value: "action",    label: "A specific action that returns a result",            sub: "Call an API, query data, transform a file — one well-defined function." },
+            { value: "procedure", label: "A repeatable procedure or set of conventions",       sub: "Steps, rules, or know-how for the agent to follow — no code to run." },
+            { value: "subtask",   label: "A self-contained sub-task that could run on its own", sub: "A larger job you might hand off to a separate worker." },
+          ],
+          cols: 1,
+        },
+        unitReason: {
+          id: "unitReason",
+          title: "Why does that sub-task need its own agent?",
+          help: "A separate agent earns its keep through parallelism or a clean, separate context — not just to stay organised.",
+          options: [
+            { value: "parallel",  label: "So it can run in parallel with other work", sub: "Fan several jobs out at once." },
+            { value: "isolation", label: "So it keeps its own context window",        sub: "Heavy or noisy work that would crowd the main thread." },
+            { value: "organize",  label: "Mainly to keep my setup organised",         sub: "Cleaner structure, one job per worker." },
+          ],
+          cols: 1,
+        },
+      };
+
+      // Base questions everyone answers; build paths (3/4/5) append the unit questions.
+      const BASE_FLOW = ["persona", "validate", "scope"];
+      const BUILD_PATHS = new Set(["path3", "path4", "path5"]);
+      function isBuildPath(key) { return BUILD_PATHS.has(key); }
+
+      // Ordered list of active question ids, derived from the current answers.
+      function activeFlow() {
+        const flow = BASE_FLOW.slice();
+        if (answers.scope === undefined) return flow;
+        if (!isBuildPath(decide(answers))) return flow;
+        flow.push("unitKind");
+        if (answers.unitKind === "subtask") flow.push("unitReason");
+        return flow;
+      }
+
+      // Build-unit recommendation, only meaningful on a build path.
+      function decideUnit() {
+        if (answers.unitKind === "action") return "tool";
+        if (answers.unitKind === "procedure") return "skill";
+        if (answers.unitKind === "subtask") {
+          if (answers.unitReason === "parallel" || answers.unitReason === "isolation") return "subagent";
+          return "skill"; // organising alone doesn't justify a separate agent
+        }
+        return null;
+      }
+
+      const UNITS = {
+        tool: {
+          icon: "🔧",
+          name: "Tool",
+          sub: "A typed function the agent calls — your code does the work and hands back a result.",
+          why: [
+            "Best for a single, well-defined action: call an API, query data, write a file, run code.",
+            "The agent decides when to call it; you control the inputs and the shape of the output.",
+            "Keep each tool focused on one job — if several start to overlap, fold them into one with an action parameter.",
+          ],
+          note: null,
+        },
+        skill: {
+          icon: "📖",
+          name: "Skill",
+          sub: "Packaged instructions the agent loads only when a task needs them — markdown, nothing to run.",
+          why: [
+            "Best for a repeatable procedure, a set of conventions, or domain know-how.",
+            "No code to maintain — it's just guidance the agent follows when it's relevant.",
+            "Reusable: one skill can guide many agents and many tasks.",
+          ],
+          note: "Check what already exists before authoring a new one.",
+        },
+        subagent: {
+          icon: "🤖",
+          name: "Subagent",
+          sub: "An independent worker with its own context window — the main agent sees only the summary it returns.",
+          why: [
+            "Worth it for parallelism (fan several jobs out at once) or for a clean, isolated context.",
+            "Give it a tight, self-contained brief — it can't see the main conversation.",
+            "Have it return a compact summary the main agent can act on.",
+          ],
+          note: "If the only reason is to stay organised, a skill is usually simpler and easier to debug.",
+        },
+      };
+
+      // Map (persona × validate × scope) → path key.
+      function decide(answers) {
+        const { persona, validate, scope } = answers;
+
+        // Step 1 of playbook: if validating, default to Path 1.
+        if (validate === "yes") return "path1";
+
+        if (scope === "knowledge") return "path2";
+        if (scope === "computer")  return "path3";
+        if (scope === "workflow")  return "path4";
+        if (scope === "scale")     return "path5";
+
+        // Persona fallback (shouldn't trigger, but safe).
+        if (persona === "biz")      return "path2";
+        if (persona === "engineer") return "path3";
+        if (persona === "maker")    return "path4";
+        return "path1";
+      }
+
+      // ---------- Renderers ----------
+      const questionStep = document.getElementById("questionStep");
+      const questionTitle = document.getElementById("questionTitle");
+      const questionHelp = document.getElementById("questionHelp");
+      const optionsEl = document.getElementById("options");
+      const stepCount = document.getElementById("stepCount");
+      const backBtn = document.getElementById("backBtn");
+      const progressEl = document.getElementById("progress");
+      const trail = document.getElementById("trail");
+      const trailRow = document.getElementById("trailRow");
+      const questionBlock = document.getElementById("questionBlock");
+      const resultBlock = document.getElementById("resultBlock");
+      const restartBtn = document.getElementById("restartBtn");
+      const pathsList = document.getElementById("pathsList");
+
+      let stepIndex = 0;
+      const answers = {};
+      const history = []; // record of {id, value, label}
+
+      function escapeHtml(s) {
+        return String(s ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function renderProgress(total) {
+        progressEl.innerHTML = "";
+        for (let i = 0; i < total; i++) {
+          const pip = document.createElement("div");
+          pip.className =
+            "progress-pip" +
+            (i < stepIndex ? " done" : i === stepIndex ? " current" : "");
+          progressEl.appendChild(pip);
+        }
+      }
+
+      function renderQuestion() {
+        const flow = activeFlow();
+        if (stepIndex >= flow.length) {
+          renderResult(decide(answers));
+          return;
+        }
+        const q = QUESTIONS[flow[stepIndex]];
+        if (!q) return;
+        const isBuildFollowup = q.id === "unitKind" || q.id === "unitReason";
+        const stepLabel = isBuildFollowup
+          ? `Build follow-up · Step ${stepIndex + 1}`
+          : `Step ${stepIndex + 1}`;
+        questionStep.textContent = stepLabel;
+        questionTitle.textContent = q.title;
+        questionHelp.textContent = q.help;
+        stepCount.textContent = stepLabel;
+        backBtn.disabled = stepIndex === 0;
+
+        optionsEl.className = `options cols-${q.cols || 1}`;
+        optionsEl.innerHTML = q.options
+          .map(
+            (opt) => `
+              <button
+                type="button"
+                class="opt-btn"
+                data-value="${escapeHtml(opt.value)}"
+                data-label="${escapeHtml(opt.label)}"
+              >
+                ${escapeHtml(opt.label)}
+                ${opt.sub ? `<span class="opt-sub">${escapeHtml(opt.sub)}</span>` : ""}
+              </button>
+            `
+          )
+          .join("");
+        optionsEl.querySelectorAll(".opt-btn").forEach((btn) => {
+          btn.addEventListener("click", () => answer(btn.dataset.value, btn.dataset.label));
+        });
+
+        renderProgress(flow.length);
+        renderTrail();
+      }
+
+      function renderTrail() {
+        if (!history.length) {
+          trail.hidden = true;
+          return;
+        }
+        trail.hidden = false;
+        trailRow.innerHTML = history
+          .map(
+            (h) =>
+              `<span class="trail-pill">${escapeHtml(h.qTitle)} → <span class="ans">${escapeHtml(h.label)}</span></span>`
+          )
+          .join("");
+      }
+
+      function answer(value, label) {
+        const q = QUESTIONS[activeFlow()[stepIndex]];
+        if (!q) return;
+        answers[q.id] = value;
+        history.push({ id: q.id, qTitle: q.title, value, label });
+        stepIndex += 1;
+
+        // Recompute the flow AFTER recording the answer so scope can branch into
+        // the build follow-ups, and a terminal answer (e.g. unitKind=action) ends.
+        if (stepIndex >= activeFlow().length) {
+          renderResult(decide(answers));
+          return;
+        }
+        renderQuestion();
+      }
+
+      // When backing through a controller question, drop the answers that depend on it.
+      function clearDependentAnswers(id) {
+        if (id === "validate" || id === "scope") {
+          delete answers.unitKind;
+          delete answers.unitReason;
+        }
+        if (id === "unitKind") {
+          delete answers.unitReason;
+        }
+      }
+
+      function backOne() {
+        if (stepIndex === 0) return;
+        const removed = history.pop();
+        if (removed) {
+          delete answers[removed.id];
+          clearDependentAnswers(removed.id);
+        }
+        stepIndex = history.length;
+        renderQuestion();
+      }
+      backBtn.addEventListener("click", backOne);
+
+      function renderResult(key) {
+        const path = PATHS[key];
+        if (!path) return;
+
+        document.getElementById("resultAvatar").textContent = path.shortKey;
+        document.getElementById("resultTitle").textContent = `Path ${path.number}: ${path.title}`;
+        document.getElementById("resultSub").textContent = path.summary;
+        document.getElementById("badgeTech").textContent = `Tech · ${path.title}`;
+        document.getElementById("badgeBuild").textContent = `Build · ${path.buildType}`;
+        document.getElementById("badgeTime").textContent = `Effort · ${path.time}`;
+        document.getElementById("badgePersona").textContent = `Made for · ${path.persona}`;
+
+        document.getElementById("resultWhy").innerHTML = path.why
+          .map((w) => `<li>${escapeHtml(w)}</li>`)
+          .join("");
+
+        const caveats = path.caveats || [];
+        const caveatsBox = document.getElementById("resultCaveats");
+        const caveatsList = document.getElementById("resultCaveatsList");
+        if (caveats.length) {
+          caveatsBox.hidden = false;
+          caveatsList.innerHTML = caveats
+            .map((c) => `<li>${escapeHtml(c)}</li>`)
+            .join("");
+        } else {
+          caveatsBox.hidden = true;
+        }
+
+        const linksEl = document.getElementById("resultLinks");
+        const linksHeading = document.getElementById("resultLinksHeading");
+        const links = path.links || [];
+        if (!links.length) {
+          linksEl.innerHTML = "";
+          linksEl.hidden = true;
+          linksHeading.hidden = true;
+        } else {
+          linksEl.hidden = false;
+          linksHeading.hidden = false;
+          linksEl.innerHTML = links
+            .map((l) => {
+              if (!l.href) {
+                return `<span class="link-pill disabled" title="Link to be added by maintainer">${escapeHtml(l.label)} — link pending</span>`;
+              }
+              return `<a class="link-pill" href="${escapeHtml(l.href)}" target="_blank" rel="noopener">${escapeHtml(l.label)} ↗</a>`;
+            })
+            .join("");
+        }
+
+        renderUnitResult(key);
+
+        questionBlock.hidden = true;
+        resultBlock.hidden = false;
+        progressEl.querySelectorAll(".progress-pip").forEach((p) => p.classList.add("done"));
+        renderTrail();
+        highlightRecommended(key);
+      }
+
+      function renderUnitResult(key) {
+        const box = document.getElementById("unitResult");
+        const unitKey = isBuildPath(key) ? decideUnit() : null;
+        const unit = unitKey ? UNITS[unitKey] : null;
+        if (!unit) {
+          box.hidden = true;
+          return;
+        }
+        box.hidden = false;
+        document.getElementById("unitIcon").textContent = unit.icon;
+        document.getElementById("unitName").textContent = unit.name;
+        document.getElementById("unitSub").textContent = unit.sub;
+        document.getElementById("unitWhy").innerHTML = unit.why
+          .map((w) => `<li>${escapeHtml(w)}</li>`)
+          .join("");
+        const noteEl = document.getElementById("unitNote");
+        if (unit.note) {
+          noteEl.hidden = false;
+          let h = escapeHtml(unit.note);
+          if (unit.noteLink) {
+            h += ` <a href="${escapeHtml(unit.noteLink.href)}">${escapeHtml(unit.noteLink.label)} →</a>`;
+          }
+          noteEl.innerHTML = h;
+        } else {
+          noteEl.hidden = true;
+        }
+      }
+
+      restartBtn.addEventListener("click", () => {
+        stepIndex = 0;
+        history.length = 0;
+        for (const k in answers) delete answers[k];
+        questionBlock.hidden = false;
+        resultBlock.hidden = true;
+        renderQuestion();
+        highlightRecommended(null);
+      });
+
+      // ---------- Right-column: paths overview ----------
+      function renderPaths() {
+        pathsList.innerHTML = Object.entries(PATHS)
+          .map(
+            ([key, p]) => `
+              <div class="path-card" data-key="${key}">
+                <div class="path-head">
+                  <span class="path-num">${p.number}</span>
+                  <span class="path-title">${escapeHtml(p.title)}</span>
+                </div>
+                <div class="path-meta">
+                  <span class="meta-pill">${escapeHtml(p.persona)}</span>
+                  <span class="meta-pill">${escapeHtml(p.time)}</span>
+                  <span class="meta-pill">${escapeHtml(p.buildType)}</span>
+                </div>
+                <p class="path-desc">${escapeHtml(p.summary)}</p>
+              </div>
+            `
+          )
+          .join("");
+      }
+
+      function highlightRecommended(key) {
+        pathsList.querySelectorAll(".path-card").forEach((el) => {
+          el.classList.toggle("is-recommended", el.dataset.key === key);
+        });
+      }
+
+      // ---------- Boot ----------
+      renderPaths();
+      renderQuestion();
+    </script>
+  </body>
+</html>
