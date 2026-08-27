@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SolutionBoss facilitator field guide · ASEAN Agent Boss</title>
+  <meta name="description" content="A practical field guide for running a SolutionBoss solutioning workshop." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#f6f9fc;--surface:#fff;--surface-2:#f1f5f9;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;--accent:#6366f1;--cyan:#06b6d4;--pink:#ec4899;--good:#0f9f75;--shadow:0 10px 30px rgba(15,23,42,.08);--gradient:linear-gradient(135deg,#0891b2 0%,#4f46e5 55%,#be185d 100%)}
+    @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0f1f;--surface:#111827;--surface-2:#18223a;--border:#273552;--text:#e8ecf5;--muted:#94a3b8;--accent:#818cf8;--cyan:#22d3ee;--pink:#f472b6;--good:#34d399;--shadow:0 12px 32px rgba(0,0,0,.38)}}
+    [data-theme="dark"]{--bg:#0a0f1f;--surface:#111827;--surface-2:#18223a;--border:#273552;--text:#e8ecf5;--muted:#94a3b8;--accent:#818cf8;--cyan:#22d3ee;--pink:#f472b6;--good:#34d399;--shadow:0 12px 32px rgba(0,0,0,.38)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}a{color:inherit}.hero{position:relative;overflow:hidden;background:var(--gradient);color:#fff}.hero:after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(#000,transparent)}.hero-inner{position:relative;z-index:1;max-width:1180px;margin:auto;padding:64px 24px 54px}.eyebrow{display:inline-block;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.15);font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1;letter-spacing:-.05em;margin:20px 0 14px}.hero p{max-width:720px;color:rgba(255,255,255,.9);font-size:18px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 18px;text-decoration:none;font-weight:750;background:#fff;color:#312e81;border:1px solid rgba(255,255,255,.75)}.btn.alt{background:transparent;color:#fff}.theme{position:absolute;z-index:3;right:20px;top:18px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.15);color:#fff;cursor:pointer}.shell{max-width:1180px;margin:auto;padding:28px 24px 70px}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-54px;position:relative;z-index:2}.quick article,.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}.quick article{padding:20px}.quick b{display:block;font-size:24px;color:var(--accent)}.quick span{font-size:12px;color:var(--muted)}nav{display:flex;gap:8px;overflow:auto;padding:28px 0 4px}nav a{white-space:nowrap;text-decoration:none;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:8px 12px;font-size:13px;color:var(--muted)}section{padding-top:44px}section>h2{font-size:30px;letter-spacing:-.035em;margin:0 0 8px}section>.lede{color:var(--muted);margin:0 0 20px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{padding:22px}.card h3{margin:0 0 8px;font-size:17px}.card p,.card li{color:var(--muted);font-size:14px}.card ul,.card ol{margin:10px 0 0;padding-left:20px}.step{display:flex;gap:15px}.num{flex:0 0 34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:800}.tag{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(99,102,241,.12);color:var(--accent);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.tag.good{background:rgba(15,159,117,.12);color:var(--good)}.code{display:flex;justify-content:space-between;gap:16px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:13px 15px;margin-top:14px}.code span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em}.code b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.agenda{display:grid;grid-template-columns:110px 1fr;gap:0}.agenda div{padding:14px;border-bottom:1px solid var(--border)}.agenda .time{color:var(--accent);font-weight:800}.callout{border-left:4px solid var(--cyan);background:var(--surface);padding:18px 20px;border-radius:14px;margin-top:18px;color:var(--muted)}table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:table}th,td{text-align:left;padding:14px;border-bottom:1px solid var(--border);vertical-align:top;font-size:13px}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}td:nth-child(2){color:var(--good);font-weight:700}footer{border-top:1px solid var(--border);padding:24px;color:var(--muted);font-size:12px;text-align:center}@media(max-width:820px){.quick{grid-template-columns:repeat(2,1fr);margin-top:-34px}.grid{grid-template-columns:1fr}.agenda{grid-template-columns:86px 1fr}table{display:block;overflow:auto}}@media(max-width:480px){.quick{grid-template-columns:1fr}.hero-inner{padding-top:72px}.shell{padding-inline:16px}.hero-inner{padding-inline:16px}}
+  </style>
+</head>
+<body>
+<header class="hero">
+  <button id="theme" class="theme" aria-label="Toggle colour theme">◐</button>
+  <div class="hero-inner">
+    <span class="eyebrow">ASEAN Agent Boss · field guide</span>
+    <h1>Run a SolutionBoss workshop</h1>
+    <p>Use this guide to set up the room, collect use cases, get a defensible Microsoft solution path and leave with a first pilot your team can act on.</p>
+    <div class="actions">
+      <a class="btn" href="https://solutionboss.trihq.dev/" target="_blank" rel="noreferrer">Open SolutionBoss ↗</a>
+      <a class="btn alt" href="../solutioning/index.html">Back to solutioning boards</a>
+    </div>
+  </div>
+</header>
+<main class="shell">
+  <div class="quick">
+    <article><b>60–90 min</b><span>Suggested workshop time</span></article>
+    <article><b>3 steps</b><span>Outcome, workflow, boundaries</span></article>
+    <article><b>1 link</b><span>Participants submit independently</span></article>
+    <article><b>1 owner view</b><span>All cases, paths and exports</span></article>
+  </div>
+
+  <nav aria-label="Guide sections">
+    <a href="#access">Access</a><a href="#prepare">Prepare</a><a href="#run">Run the room</a><a href="#inputs">Inputs</a><a href="#review">Review</a><a href="#facilitator">Facilitator notes</a>
+  </nav>
+
+  <section id="access">
+    <h2>Access</h2>
+    <p class="lede">The facilitator portal and analytics are protected by one shared password. Each workshop can have its own participant password.</p>
+    <div class="grid">
+      <article class="card"><span class="tag good">Portal</span><h3>SolutionBoss</h3><p><a href="https://solutionboss.trihq.dev/">solutionboss.trihq.dev</a></p><div class="code"><span>Portal password</span><b>AISolutioning</b></div></article>
+      <article class="card"><span class="tag">Participant access</span><h3>Use a separate workshop password</h3><p>Set a short workshop-specific password when you create the link. Share it only with attendees. Do not reuse the main portal password.</p></article>
+    </div>
+  </section>
+
+  <section id="prepare">
+    <h2>Prepare the workshop</h2>
+    <p class="lede">Create the workshop before the session so the participant link and owner dashboard are ready.</p>
+    <div class="grid">
+      <article class="card step"><div class="num">1</div><div><h3>Open Create workshop</h3><p>Sign in to SolutionBoss, select <strong>Create workshop link</strong>, then name the workshop and customer or team.</p></div></article>
+      <article class="card step"><div class="num">2</div><div><h3>Set the shared context</h3><p>Add the business unit, workshop objective and any constraints everyone should work within.</p></div></article>
+      <article class="card step"><div class="num">3</div><div><h3>Choose eligible products</h3><p>Keep the full portfolio unless the sponsor has a real constraint. Narrowing the list changes what SolutionBoss is allowed to recommend.</p></div></article>
+      <article class="card step"><div class="num">4</div><div><h3>Save both links</h3><p>Send the participant link to the room. Keep the owner dashboard link for yourself; it contains the consolidated portfolio and review actions.</p></div></article>
+    </div>
+    <div class="callout"><strong>Before people join:</strong> open the participant link in a private browser window, test the password, load the employee-onboarding example, and submit one dry run.</div>
+  </section>
+
+  <section id="run">
+    <h2>Run the room</h2>
+    <p class="lede">This sequence works for a live envisioning session. Spend the time on evidence and decisions, not product pitching.</p>
+    <div class="card agenda">
+      <div class="time">0–10 min</div><div><strong>Frame the outcome.</strong> Agree whose work should change and what result matters.</div>
+      <div class="time">10–25 min</div><div><strong>Map today.</strong> Capture the current steps, systems, information and hand-offs.</div>
+      <div class="time">25–40 min</div><div><strong>Set boundaries.</strong> Decide what may happen automatically, what needs approval and who owns the process.</div>
+      <div class="time">40–55 min</div><div><strong>Submit.</strong> Each team enters one use case through the participant link. SolutionBoss asks clarification only when the missing detail could change the recommendation.</div>
+      <div class="time">55–75 min</div><div><strong>Compare paths.</strong> Use the owner dashboard to review the portfolio, challenge assumptions and confirm or revise each path.</div>
+      <div class="time">75–90 min</div><div><strong>Choose the first pilots.</strong> Export the portfolio and assign an owner for validation.</div>
+    </div>
+  </section>
+
+  <section id="inputs">
+    <h2>Inputs</h2>
+    <p class="lede">Use the shortest input path that preserves the facts you need. The browser portal supports the first three directly.</p>
+    <table>
+      <thead><tr><th>Input</th><th>Status</th><th>Best use</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>Guided intake</td><td>Ready now</td><td>Most workshop teams</td><td>Complete Outcome, Workflow and Boundaries. Use the example loader to show the expected level of detail.</td></tr>
+        <tr><td>Free-form text</td><td>Ready now</td><td>A use case already written as a brief</td><td>Switch to Free-form and paste the brief. Include users, current work, desired outcome, systems, actions, approvals and first pilot.</td></tr>
+        <tr><td>Participant workshop link</td><td>Ready now</td><td>Multiple teams in one session</td><td>Each participant or team submits through the same link. Every completed case appears in the owner dashboard.</td></tr>
+        <tr><td>Mural notes or stickies</td><td>Adapter available</td><td>Existing solutioning boards</td><td>Use the Mural export/webhook adapter, or paste consolidated stickies into Free-form. Direct board-URL import is not yet exposed in the facilitator UI.</td></tr>
+        <tr><td>Board screenshot</td><td>Technical path</td><td>A visual board with readable text</td><td>The underlying agent accepts image input through its technical interface. The field portal does not yet provide a screenshot upload control.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="review">
+    <h2>Review and follow through</h2>
+    <div class="grid">
+      <article class="card"><h3>Owner dashboard</h3><ul><li>Filter by team and recommended solution.</li><li>Open the complete intake and recommendation.</li><li>Confirm the path or create a revision case.</li><li>Export the full portfolio to PDF.</li></ul></article>
+      <article class="card"><h3>Recommendation package</h3><ul><li>Microsoft solution family and rationale.</li><li>Architecture planes, components and ownership.</li><li>Now, next and later roadmap.</li><li>Validation checks, risks, evidence and starter files.</li></ul></article>
+      <article class="card"><h3>App analytics</h3><ul><li>Sessions, page views and API activity.</li><li>Submitted, completed, failed and interrupted cases.</li><li>Recommended-solution distribution.</li><li>Recent pseudonymous activity.</li></ul></article>
+      <article class="card"><h3>Close the workshop</h3><ul><li>Name the business owner for each selected pilot.</li><li>Record unresolved data, identity and approval questions.</li><li>Agree the smallest test and success threshold.</li><li>Do not treat the recommendation as production approval.</li></ul></article>
+    </div>
+  </section>
+
+  <section id="facilitator">
+    <h2>Facilitator notes</h2>
+    <div class="grid">
+      <article class="card"><h3>Push for facts</h3><p>Ask what happens today, who makes the decision, what information they trust and what result would justify a pilot. Avoid starting with a preferred product.</p></article>
+      <article class="card"><h3>Keep approvals explicit</h3><p>If the solution changes records, sends external messages, grants access or makes consequential decisions, name the human approver and the audit evidence required.</p></article>
+      <article class="card"><h3>Challenge unnecessary agents</h3><p>SolutionBoss can recommend conventional automation when rules and workflow are enough. That is a valid outcome, not a failed agent workshop.</p></article>
+      <article class="card"><h3>Use current product boundaries</h3><p>The recommendation agent is grounded in AIDF, current Microsoft Learn material and a maintained product-boundary corpus. Verify tenant-specific licensing, preview status and connector availability before build.</p></article>
+    </div>
+  </section>
+</main>
+<footer>ASEAN Agent Boss · SolutionBoss facilitator field guide · Built and maintained by Tri Nguyen</footer>
+<script>
+const root=document.documentElement,key='agent-skill-theme',stored=localStorage.getItem(key);if(stored)root.dataset.theme=stored;document.getElementById('theme').onclick=()=>{const current=root.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');root.dataset.theme=current==='dark'?'light':'dark';localStorage.setItem(key,root.dataset.theme)};
+</script>
+</body>
+</html>
