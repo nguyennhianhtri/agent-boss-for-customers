@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SolutionBoss workshop quick start</title>
+<meta name="description" content="One-page guide to setting up and running a SolutionBoss workshop." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+:root{--ink:#10213a;--muted:#53647a;--line:#dbe3ee;--bg:#f4f7fb;--card:#fff;--blue:#4f46e5;--cyan:#0891b2;--pink:#be185d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.48}.page{width:min(1080px,calc(100% - 32px));margin:24px auto;background:var(--card);border:1px solid var(--line);box-shadow:0 16px 48px rgba(15,23,42,.09)}header{padding:34px 38px;color:#fff;background:linear-gradient(135deg,var(--cyan),var(--blue) 58%,var(--pink))}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}h1{font-size:42px;line-height:1.02;letter-spacing:-.04em;margin:12px 0 10px}header p{max-width:720px;margin:0;color:rgba(255,255,255,.9)}.access{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.access span,.access a{padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;font-size:13px}.access b{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.body{padding:30px 38px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{position:relative;border:1px solid var(--line);border-radius:14px;padding:20px}.num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800}.step h2{font-size:18px;margin:16px 0 7px}.step p{color:var(--muted);font-size:13px;margin:0}.step ul{color:var(--muted);font-size:12px;padding-left:18px;margin:10px 0 0}.flow{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}.flow h2{font-size:22px;margin:0 0 14px}.views{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.view{border-top:4px solid var(--blue);background:#f8faff;border-radius:10px;padding:14px}.view:last-child{border-top-style:dashed;border-top-color:var(--pink)}.view b{display:block;font-size:13px}.view span{display:block;color:var(--muted);font-size:11px;margin-top:5px}.roles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.role{border:1px solid var(--line);border-radius:12px;padding:17px}.role h3{font-size:15px;margin:0 0 6px}.role p{font-size:12px;color:var(--muted);margin:0}.note{margin-top:20px;border-left:4px solid var(--cyan);background:#f0f9ff;padding:14px 16px;color:var(--muted);font-size:12px}footer{display:flex;justify-content:space-between;gap:12px;padding:18px 38px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}footer a{color:var(--blue)}@media(max-width:760px){.steps,.views,.roles{grid-template-columns:1fr}.body,header,footer{padding-left:22px;padding-right:22px}h1{font-size:34px}.page{margin:0;width:100%;border:0;box-shadow:none}}@media print{@page{size:A4 landscape;margin:8mm}body{background:#fff;font-size:9pt}.page{height:194mm;width:100%;margin:0;border:0;box-shadow:none;overflow:hidden}header{padding:16px 24px;print-color-adjust:exact;-webkit-print-color-adjust:exact}h1{font-size:28px;margin:6px 0}header p{font-size:11px}.access{margin-top:10px}.access span,.access a{padding:5px 8px;font-size:9px}.body{padding:14px 24px}.steps{grid-template-columns:repeat(3,1fr);gap:8px}.views{grid-template-columns:repeat(4,1fr)}.roles{grid-template-columns:repeat(2,1fr)}.step{padding:11px}.num{height:25px;width:25px;font-size:10px}.step h2{font-size:13px;margin:8px 0 4px}.step p,.step ul{font-size:9px;line-height:1.3}.step ul{margin-top:5px}.flow{margin-top:10px;padding-top:9px}.flow h2{font-size:15px;margin-bottom:7px}.views{gap:6px}.view{padding:8px}.view b{font-size:9px}.view span{font-size:8px;line-height:1.3}.roles{gap:8px;margin-top:10px}.role{padding:9px}.role h3{font-size:10px}.role p{font-size:8px;line-height:1.3}.note{font-size:8px;line-height:1.3;margin-top:9px;padding:7px 10px}footer{font-size:8px;padding:7px 24px}.step,.role,.view{break-inside:avoid}}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<div class="eyebrow">SolutionBoss · workshop quick start</div>
+<h1>From workshop setup to participant link</h1>
+<p>Use SolutionBoss to collect business use cases and recommend a Microsoft solution path without asking participants to know the products first.</p>
+<div class="access"><a href="https://solutionboss.trihq.dev/">solutionboss.trihq.dev ↗</a><span>Portal password: <b>AISolutioning</b></span></div>
+</header>
+<div class="body">
+<section class="steps" aria-label="Workshop setup steps">
+<article class="step"><span class="num">1</span><h2>Create the workshop</h2><p>Select <strong>Create workshop link</strong> and set:</p><ul><li>Workshop and customer or team name</li><li>Objective and shared context</li><li>Eligible solution paths</li><li>A separate participant password</li></ul></article>
+<article class="step"><span class="num">2</span><h2>Check the intake</h2><p>SolutionBoss generates the Business Use-Case Intake from those settings. Open the participant link in a private window and run the example once before the session.</p></article>
+<article class="step"><span class="num">3</span><h2>Share the link</h2><p>Send the participant link and workshop password to attendees. Keep the owner-dashboard link for the Workshop Lead. Participants do not need the main portal password.</p></article>
+</section>
+<section class="flow">
+<h2>What happens after submission</h2>
+<div class="views">
+<div class="view"><b>1 · Recommended path</b><span>Plain-language choice, first pilot and simple product descriptions.</span></div>
+<div class="view"><b>2 · Build the first pilot</b><span>Four readiness checks and a numbered build checklist.</span></div>
+<div class="view"><b>3 · Validate the pilot</b><span>Success checks and an optional demonstration script.</span></div>
+<div class="view"><b>4 · Technical review</b><span>Architecture, AIDF trace, risks, alternatives and evidence.</span></div>
+</div>
+</section>
+<section class="roles">
+<article class="role"><h3>Participants</h3><p>Describe the business problem, current work, desired result, trusted information, actions, approvals and a useful first pilot. They start with the first three screens.</p></article>
+<article class="role"><h3>Workshop Lead / Chief Agent Officer</h3><p>Review the consolidated portfolio, open Technical review, challenge the product and architecture, confirm or revise each path, and export the workshop portfolio.</p></article>
+</section>
+<div class="note"><strong>Keep product choice open during intake.</strong> SolutionBoss may recommend conventional automation when a fixed workflow is enough. Verify tenant licensing, connectors, preview status, identity and permissions before build.</div>
+</div>
+<footer><span>ASEAN Agent Boss · SolutionBoss</span><span><a href="index.html">Full facilitator field guide</a> · Print or save this page as PDF</span></footer>
+</main>
+</body>
+</html>
